@@ -1,0 +1,9 @@
+C:\Users\Saendra\Dropbox\Coding\Calc\Calc\bin\Release\Calc.exe.config
+C:\Users\Saendra\Dropbox\Coding\Calc\Calc\bin\Release\Calc.exe
+C:\Users\Saendra\Dropbox\Coding\Calc\Calc\bin\Release\Calc.pdb
+C:\Users\Saendra\Dropbox\Coding\Calc\Calc\obj\Release\Calc.CalcForm.resources
+C:\Users\Saendra\Dropbox\Coding\Calc\Calc\obj\Release\Calc.Properties.Resources.resources
+C:\Users\Saendra\Dropbox\Coding\Calc\Calc\obj\Release\Calc.csproj.GenerateResource.Cache
+C:\Users\Saendra\Dropbox\Coding\Calc\Calc\obj\Release\Calc.exe
+C:\Users\Saendra\Dropbox\Coding\Calc\Calc\obj\Release\Calc.pdb
+C:\Users\Saendra\Dropbox\Coding\Calc\Calc\obj\Release\Calc.csprojResolveAssemblyReference.cache
