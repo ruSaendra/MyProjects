@@ -150,6 +150,21 @@ namespace Calc
                 case Keys.Enter:                                        // Кнопка Энтер - повторение предыдущего действия или выполнение выбранного.
                     enterbttn_click_func();
                     return true;
+                case Keys.Control|Keys.C:                               // Копирование значения поля resultBox в буфер обмена.
+                    Clipboard.SetText(resultBox.Text);
+                    return true;
+                case Keys.Control|Keys.V:                               // Вставка из буфера обмена в поле txtBox.
+                    try                                                 // Шоб буков не було.
+                    {
+                        double.Parse(Clipboard.GetText());
+                    }
+                    catch(FormatException)
+                    {
+                        MessageBox.Show("В буфере обмена некорректные данные!", "Ошибка!");
+                        return true;
+                    }
+                    txtBox.Text = Clipboard.GetText();
+                    return true;
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);    
             }

@@ -27,7 +27,7 @@ namespace Calc
                 case 4:
                     if (GlobalVars.glob_2nd == 0)                                           // Деление.
                     {
-                        MessageBox.Show("Error: division by 0 is not allowed.");            // Очевидно.
+                        MessageBox.Show("Деление на ноль недопустимо.","Ошибка");           // Очевидно.
                         break;
                     }
                     else
