@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Windows;
 
 namespace Calc
 {
@@ -311,6 +312,23 @@ namespace Calc
         private void btnPowY_Click(object sender, EventArgs e)
         {
             actbttn_click_func(5);
+        }
+
+        private void Form1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            DialogResult dbxresult = MessageBox.Show("Вы уверены, что хотите закрыть приложение?", "Выход из приложения", MessageBoxButtons.YesNo);
+            switch (dbxresult)
+            {
+                case DialogResult.Yes:
+                    e.Cancel = false;
+                    break;
+                case DialogResult.No:
+                    e.Cancel = true;
+                    break;
+                default:
+                    e.Cancel = true;
+                    break;
+            }
         }
 
     }

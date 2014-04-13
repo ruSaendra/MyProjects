@@ -12,7 +12,6 @@ C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Release\Calc.exe
 C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Release\Calc.pdb
 C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\bin\Release\Calc.exe
 C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\bin\Release\Calc.pdb
-C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Release\Calc.csprojResolveAssemblyReference.cache
 C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Release\Calc.CalcForm.resources
 C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Release\Calc.Properties.Resources.resources
 C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Release\Calc.csproj.GenerateResource.Cache

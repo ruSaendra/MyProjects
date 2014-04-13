@@ -633,6 +633,7 @@
             this.txtresgroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.Form1_Closing);
 
         }
 

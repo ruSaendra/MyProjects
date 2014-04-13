@@ -7,3 +7,16 @@ C:\Users\Saendra\Dropbox\Coding\Calc\Calc\obj\Debug\Calc.Properties.Resources.re
 C:\Users\Saendra\Dropbox\Coding\Calc\Calc\obj\Debug\Calc.csproj.GenerateResource.Cache
 C:\Users\Saendra\Dropbox\Coding\Calc\Calc\obj\Debug\Calc.exe
 C:\Users\Saendra\Dropbox\Coding\Calc\Calc\obj\Debug\Calc.pdb
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\bin\Debug\Calc.exe.config
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Debug\Calc.exe
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Debug\Calc.pdb
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\bin\Debug\Calc.exe.manifest
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\bin\Debug\Calc.application
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\bin\Debug\Calc.exe
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\bin\Debug\Calc.pdb
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Debug\Calc.csprojResolveAssemblyReference.cache
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Debug\Calc.CalcForm.resources
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Debug\Calc.Properties.Resources.resources
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Debug\Calc.csproj.GenerateResource.Cache
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Debug\Calc.exe.manifest
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Debug\Calc.application

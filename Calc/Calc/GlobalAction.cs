@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace Calc
 {
