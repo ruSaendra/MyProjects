@@ -49,9 +49,9 @@
             this.btnPow3 = new System.Windows.Forms.Button();
             this.btnPowY = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnSqrt = new System.Windows.Forms.Button();
+            this.btnCbrt = new System.Windows.Forms.Button();
+            this.btnYroot = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -283,32 +283,35 @@
             this.button4.Text = "+";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnSqrt
             // 
-            this.button5.Location = new System.Drawing.Point(260, 82);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(40, 29);
-            this.button5.TabIndex = 23;
-            this.button5.Text = "+";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnSqrt.Location = new System.Drawing.Point(260, 82);
+            this.btnSqrt.Name = "btnSqrt";
+            this.btnSqrt.Size = new System.Drawing.Size(40, 29);
+            this.btnSqrt.TabIndex = 23;
+            this.btnSqrt.Text = "sqrtX";
+            this.btnSqrt.UseVisualStyleBackColor = true;
+            this.btnSqrt.Click += new System.EventHandler(this.btnSqrt_Click);
             // 
-            // button6
+            // btnCbrt
             // 
-            this.button6.Location = new System.Drawing.Point(260, 117);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(40, 29);
-            this.button6.TabIndex = 24;
-            this.button6.Text = "+";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnCbrt.Location = new System.Drawing.Point(260, 117);
+            this.btnCbrt.Name = "btnCbrt";
+            this.btnCbrt.Size = new System.Drawing.Size(40, 29);
+            this.btnCbrt.TabIndex = 24;
+            this.btnCbrt.Text = "cbrtX";
+            this.btnCbrt.UseVisualStyleBackColor = true;
+            this.btnCbrt.Click += new System.EventHandler(this.btnCbrt_Click);
             // 
-            // button7
+            // btnYroot
             // 
-            this.button7.Location = new System.Drawing.Point(260, 152);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(40, 29);
-            this.button7.TabIndex = 25;
-            this.button7.Text = "+";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnYroot.Location = new System.Drawing.Point(260, 152);
+            this.btnYroot.Name = "btnYroot";
+            this.btnYroot.Size = new System.Drawing.Size(40, 29);
+            this.btnYroot.TabIndex = 25;
+            this.btnYroot.Text = "YrtX";
+            this.btnYroot.UseVisualStyleBackColor = true;
+            this.btnYroot.Click += new System.EventHandler(this.btnYroot_Click);
             // 
             // button8
             // 
@@ -595,9 +598,9 @@
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnYroot);
+            this.Controls.Add(this.btnCbrt);
+            this.Controls.Add(this.btnSqrt);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnPowY);
             this.Controls.Add(this.btnPow3);
@@ -626,6 +629,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
             this.TransparencyKey = System.Drawing.Color.Brown;
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.Form1_Closing);
             this.Load += new System.EventHandler(this.CalcForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -633,7 +637,6 @@
             this.txtresgroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.Closing += new System.ComponentModel.CancelEventHandler(this.Form1_Closing);
 
         }
 
@@ -659,9 +662,9 @@
         private System.Windows.Forms.Button btnPow3;
         private System.Windows.Forms.Button btnPowY;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnSqrt;
+        private System.Windows.Forms.Button btnCbrt;
+        private System.Windows.Forms.Button btnYroot;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;

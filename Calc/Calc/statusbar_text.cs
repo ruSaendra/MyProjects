@@ -28,6 +28,12 @@ namespace Calc
                     if (GlobalVars.glob_2nd == 3)
                         return ("X^3");
                     return ("X^Y");
+                case 6:
+                    if (GlobalVars.glob_2nd == 2)
+                        return ("sqrtX");
+                    if (GlobalVars.glob_2nd == 3)
+                        return ("cbrtX");
+                    return ("YrootX");
                 default:
                     return (sb_act);
             }
@@ -53,6 +59,12 @@ namespace Calc
                     if (GlobalVars.glob_2nd == 3)
                         return ("Возведение в куб: умножить число Х само на себя два раза");
                     return ("Возведение в степень: умножить число Х само на себя Y раз");
+                case 6:
+                    if (GlobalVars.glob_2nd == 2)
+                        return ("Извлечение квадратного корня из Х.");
+                    if (GlobalVars.glob_2nd == 3)
+                        return ("Извлечение кубического корня из Х.");
+                    return ("Извлечение корня степени Y из Х.");
                 default:
                     return (sb_dscr);
             }

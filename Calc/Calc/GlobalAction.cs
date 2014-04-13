@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Forms;
 
 namespace Calc
 {
@@ -38,6 +37,9 @@ namespace Calc
                     }
                 case 5:
                     GlobalVars.glob_1st = Math.Pow(GlobalVars.glob_1st, GlobalVars.glob_2nd);
+                    break;
+                case 6:
+                    GlobalVars.glob_1st = Math.Pow(GlobalVars.glob_1st, 1 / GlobalVars.glob_2nd);
                     break;
                 default:
                     break;

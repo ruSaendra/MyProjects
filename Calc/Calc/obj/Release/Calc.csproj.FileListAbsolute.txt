@@ -19,3 +19,4 @@ C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\bin\Release\Calc.exe.mani
 C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\bin\Release\Calc.application
 C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Release\Calc.exe.manifest
 C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Release\Calc.application
+C:\Users\Saendra\Documents\GitHub\MyProjects\Calc\Calc\obj\Release\Calc.csprojResolveAssemblyReference.cache

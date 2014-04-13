@@ -24,17 +24,31 @@ namespace Calc
 
             ///TODO:
             ///Memory
-            ///Возведение в степени - done.
-            ///Извлечение корней
             ///Логарифмы
             ///Тригонометрические функции
-            ///Вопрос при закрытии
             ///Дизайн
             ///config-файл
             ///Запись лога
             /// ^в паралллельном потоке
             ///Новые иконки
             
+        }
+
+        private void Form1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            DialogResult dbxresult = MessageBox.Show("Вы уверены, что хотите закрыть приложение?", "Выход из приложения", MessageBoxButtons.YesNo);
+            switch (dbxresult)
+            {
+                case DialogResult.Yes:
+                    e.Cancel = false;
+                    break;
+                case DialogResult.No:
+                    e.Cancel = true;
+                    break;
+                default:
+                    e.Cancel = true;
+                    break;
+            }
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -291,7 +305,7 @@ namespace Calc
                 txtBox.Text = "-0";
         }
 
-        private void btnPow2_Click(object sender, EventArgs e)
+        private void btnPow2_Click(object sender, EventArgs e)          // Возведение в квадрат.
         {
             GlobalVars.glob_action = 5;
             if(resultBox.Text=="")
@@ -300,7 +314,7 @@ namespace Calc
             actbttn_click_func(5);
         }
 
-        private void btnPow3_Click(object sender, EventArgs e)
+        private void btnPow3_Click(object sender, EventArgs e)          // Возведение в куб.
         {
             GlobalVars.glob_action = 5;
             if (resultBox.Text == "")
@@ -309,27 +323,35 @@ namespace Calc
             actbttn_click_func(5);
         }
 
-        private void btnPowY_Click(object sender, EventArgs e)
+        private void btnPowY_Click(object sender, EventArgs e)          // Возведение в n-ную степень.
         {
             actbttn_click_func(5);
         }
 
-        private void Form1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void btnSqrt_Click(object sender, EventArgs e)          // Извлечение квадратного корня.
         {
-            DialogResult dbxresult = MessageBox.Show("Вы уверены, что хотите закрыть приложение?", "Выход из приложения", MessageBoxButtons.YesNo);
-            switch (dbxresult)
-            {
-                case DialogResult.Yes:
-                    e.Cancel = false;
-                    break;
-                case DialogResult.No:
-                    e.Cancel = true;
-                    break;
-                default:
-                    e.Cancel = true;
-                    break;
-            }
+            GlobalVars.glob_action = 6;
+            if (resultBox.Text == "")
+                GlobalVars.glob_1st = double.Parse(txtBox.Text);
+            txtBox.Text = "2";
+            actbttn_click_func(6);
         }
+
+        private void btnCbrt_Click(object sender, EventArgs e)          // Извлечение кубического корня.
+        {
+            GlobalVars.glob_action = 6;
+            if (resultBox.Text == "")
+                GlobalVars.glob_1st = double.Parse(txtBox.Text);
+            txtBox.Text = "3";
+            actbttn_click_func(6);
+        }
+
+        private void btnYroot_Click(object sender, EventArgs e)         // Извлечение корня n-ной степени.
+        {
+            actbttn_click_func(6);
+        }
+
+
 
     }
 }
