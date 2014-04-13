@@ -23,7 +23,7 @@ namespace Calc
 
             ///TODO:
             ///Memory
-            ///Возведение в степени
+            ///Возведение в степени - done.
             ///Извлечение корней
             ///Логарифмы
             ///Тригонометрические функции
@@ -174,15 +174,13 @@ namespace Calc
         private void enterbttn_click_func()
         {
             if (txtBox.Text == "" && !GlobalVars.enter_round)
-            {
                 resultBox.Text = GlobalAction.glob_numberenter(-1, "" + GlobalVars.glob_1st);
-                GlobalVars.enter_round = true;
-            }
             else
                 if (txtBox.Text == "")
                     resultBox.Text = GlobalAction.glob_numberenter(-1, "" + GlobalVars.glob_2nd);
                 else
                     resultBox.Text = GlobalAction.glob_numberenter(-1, txtBox.Text);
+            GlobalVars.enter_round = true;
             txtBox.Text = "";
         }
 
@@ -290,6 +288,29 @@ namespace Calc
             txtBox.Text = "-" + txtBox.Text;
             if (txtBox.Text == "-")
                 txtBox.Text = "-0";
+        }
+
+        private void btnPow2_Click(object sender, EventArgs e)
+        {
+            GlobalVars.glob_action = 5;
+            if(resultBox.Text=="")
+                GlobalVars.glob_1st = double.Parse(txtBox.Text);
+            txtBox.Text = "2";
+            actbttn_click_func(5);
+        }
+
+        private void btnPow3_Click(object sender, EventArgs e)
+        {
+            GlobalVars.glob_action = 5;
+            if (resultBox.Text == "")
+                GlobalVars.glob_1st = double.Parse(txtBox.Text);
+            txtBox.Text = "3";
+            actbttn_click_func(5);
+        }
+
+        private void btnPowY_Click(object sender, EventArgs e)
+        {
+            actbttn_click_func(5);
         }
 
     }

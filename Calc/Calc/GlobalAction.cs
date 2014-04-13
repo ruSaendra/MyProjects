@@ -34,6 +34,9 @@ namespace Calc
                         GlobalVars.glob_1st = GlobalVars.glob_1st / GlobalVars.glob_2nd;
                         break;
                     }
+                case 5:
+                    GlobalVars.glob_1st = Math.Pow(GlobalVars.glob_1st, GlobalVars.glob_2nd);
+                    break;
                 default:
                     break;
             }
