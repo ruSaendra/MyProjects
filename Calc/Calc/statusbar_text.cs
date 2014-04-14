@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Calc
 {
@@ -34,6 +35,12 @@ namespace Calc
                     if (GlobalVars.glob_2nd == 3)
                         return ("cbrtX");
                     return ("YrootX");
+                case 7:
+                    if (GlobalVars.glob_2nd == 10)
+                        return ("LgX");
+                    if (GlobalVars.glob_2nd == double.Parse(GlobalVars.glob_exp,CultureInfo.InvariantCulture))
+                        return ("LnX");
+                    return ("LogX");
                 default:
                     return (sb_act);
             }
@@ -61,10 +68,16 @@ namespace Calc
                     return ("Возведение в степень: умножить число Х само на себя Y раз");
                 case 6:
                     if (GlobalVars.glob_2nd == 2)
-                        return ("Извлечение квадратного корня из Х.");
+                        return ("Извлечение квадратного корня из Х");
                     if (GlobalVars.glob_2nd == 3)
-                        return ("Извлечение кубического корня из Х.");
-                    return ("Извлечение корня степени Y из Х.");
+                        return ("Извлечение кубического корня из Х");
+                    return ("Извлечение корня степени Y из Х");
+                case 7:
+                    if (GlobalVars.glob_2nd == 10)
+                        return ("Вычисление десятичного логарифма Х");
+                    if (GlobalVars.glob_2nd == double.Parse(GlobalVars.glob_exp,CultureInfo.InvariantCulture))
+                        return ("Вычисление натурального логарифма Х");
+                    return ("Вычисление логарифма Х по основанию Y");
                 default:
                     return (sb_dscr);
             }

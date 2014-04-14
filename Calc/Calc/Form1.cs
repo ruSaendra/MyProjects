@@ -57,93 +57,63 @@ namespace Calc
             {
                                                                         // Блок хоткеев для ввода цифр и десятичной точки.
                 case Keys.D1:
+                case Keys.NumPad1:
                     numbttn_click_func('1');
                     return true;                    
-                case Keys.D2:                       
+                case Keys.D2:
+                case Keys.NumPad2:   
                     numbttn_click_func('2');        
                     return true;                    
                 case Keys.D3:
-                    numbttn_click_func('3');
-                    return true;
-                case Keys.D4:
-                    numbttn_click_func('4');
-                    return true;
-                case Keys.D5:
-                    numbttn_click_func('5');
-                    return true;
-                case Keys.D6:
-                    numbttn_click_func('6');
-                    return true;
-                case Keys.D7:
-                    numbttn_click_func('7');
-                    return true;
-                case Keys.D8:
-                    numbttn_click_func('8');
-                    return true;
-                case Keys.D9:
-                    numbttn_click_func('9');
-                    return true;
-                case Keys.D0:
-                    numbttn_click_func('0');
-                    return true;
-                case Keys.OemPeriod:
-                    numbttn_click_func('.');
-                    return true;
-                case Keys.NumPad1:
-                    numbttn_click_func('1');
-                    return true;
-                case Keys.NumPad2:
-                    numbttn_click_func('2');
-                    return true;
                 case Keys.NumPad3:
                     numbttn_click_func('3');
                     return true;
+                case Keys.D4:
                 case Keys.NumPad4:
                     numbttn_click_func('4');
                     return true;
+                case Keys.D5:
                 case Keys.NumPad5:
                     numbttn_click_func('5');
                     return true;
+                case Keys.D6:
                 case Keys.NumPad6:
                     numbttn_click_func('6');
                     return true;
+                case Keys.D7:
                 case Keys.NumPad7:
                     numbttn_click_func('7');
                     return true;
+                case Keys.D8:
                 case Keys.NumPad8:
                     numbttn_click_func('8');
                     return true;
+                case Keys.D9:
                 case Keys.NumPad9:
                     numbttn_click_func('9');
                     return true;
+                case Keys.D0:
                 case Keys.NumPad0:
                     numbttn_click_func('0');
                     return true;
+                case Keys.OemPeriod:
                 case Keys.Decimal:
                     numbttn_click_func('.');
                     return true;
                                                                         // Конец блока хоткеев для ввода цифр и десятичной точки.
                 case Keys.Add:                                          // Сложение: нампад.
-                    actbttn_click_func(1);
-                    return true;
                 case Keys.Oemplus:                                      // Сложение: основная клавиатура.
                     actbttn_click_func(1);
                     return true;
                 case Keys.Subtract:                                     // Вычитание: нампад.
-                    actbttn_click_func(2);
-                    return true;
                 case Keys.OemMinus:                                     // Вычитание: основная клавиатура.
                     actbttn_click_func(2);
                     return true;
                 case Keys.Multiply:                                     // Умножение: нампад.
-                    actbttn_click_func(3);
-                    return true;
                 case Keys.Shift|Keys.D8:                                // Умножение: основная клавиатура.
                     actbttn_click_func(3);
                     return true;
                 case Keys.Divide:                                       // Деление: нампад.
-                    actbttn_click_func(4);
-                    return true;
                 case Keys.OemQuestion:                                  // Деление: основная клавиатура.
                     actbttn_click_func(4);
                     return true;
@@ -151,9 +121,11 @@ namespace Calc
                     enterbttn_click_func();
                     return true;
                 case Keys.Control|Keys.C:                               // Копирование значения поля resultBox в буфер обмена.
+                case Keys.Control|Keys.Insert:                          // Копирование значения поля resultBox в буфер обмена - олдфажный вариант.
                     Clipboard.SetText(resultBox.Text);
                     return true;
                 case Keys.Control|Keys.V:                               // Вставка из буфера обмена в поле txtBox.
+                case Keys.Shift|Keys.Insert:                            // Вставка из буфера обмена в поле txtbox - олдфажный вариант.
                     try                                                 // Шоб буков не було.
                     {
                         double.Parse(Clipboard.GetText());
@@ -364,6 +336,29 @@ namespace Calc
         private void btnYroot_Click(object sender, EventArgs e)         // Извлечение корня n-ной степени.
         {
             actbttn_click_func(6);
+        }
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            actbttn_click_func(7);
+        }
+
+        private void btnLg_Click(object sender, EventArgs e)
+        {
+            GlobalVars.glob_action = 7;
+            if (resultBox.Text == "")
+                GlobalVars.glob_1st = double.Parse(txtBox.Text);
+            txtBox.Text = "10";
+            actbttn_click_func(7);
+        }
+
+        private void btnLn_Click(object sender, EventArgs e)
+        {
+            GlobalVars.glob_action = 7;
+            if (resultBox.Text == "")
+                GlobalVars.glob_1st = double.Parse(txtBox.Text);
+            txtBox.Text = ""+GlobalVars.glob_exp;
+            actbttn_click_func(7);
         }
 
 

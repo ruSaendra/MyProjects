@@ -53,9 +53,9 @@
             this.btnCbrt = new System.Windows.Forms.Button();
             this.btnYroot = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnLog = new System.Windows.Forms.Button();
+            this.btnLg = new System.Windows.Forms.Button();
+            this.btnLn = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
@@ -322,32 +322,35 @@
             this.button8.Text = "+";
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // btnLog
             // 
-            this.button9.Location = new System.Drawing.Point(306, 82);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(40, 29);
-            this.button9.TabIndex = 28;
-            this.button9.Text = "+";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnLog.Location = new System.Drawing.Point(306, 82);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(40, 29);
+            this.btnLog.TabIndex = 28;
+            this.btnLog.Text = "LogX";
+            this.btnLog.UseVisualStyleBackColor = true;
+            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
-            // button10
+            // btnLg
             // 
-            this.button10.Location = new System.Drawing.Point(306, 117);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(40, 29);
-            this.button10.TabIndex = 29;
-            this.button10.Text = "+";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnLg.Location = new System.Drawing.Point(306, 117);
+            this.btnLg.Name = "btnLg";
+            this.btnLg.Size = new System.Drawing.Size(40, 29);
+            this.btnLg.TabIndex = 29;
+            this.btnLg.Text = "LgX";
+            this.btnLg.UseVisualStyleBackColor = true;
+            this.btnLg.Click += new System.EventHandler(this.btnLg_Click);
             // 
-            // button11
+            // btnLn
             // 
-            this.button11.Location = new System.Drawing.Point(306, 152);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(40, 29);
-            this.button11.TabIndex = 30;
-            this.button11.Text = "+";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnLn.Location = new System.Drawing.Point(306, 152);
+            this.btnLn.Name = "btnLn";
+            this.btnLn.Size = new System.Drawing.Size(40, 29);
+            this.btnLn.TabIndex = 30;
+            this.btnLn.Text = "LnX";
+            this.btnLn.UseVisualStyleBackColor = true;
+            this.btnLn.Click += new System.EventHandler(this.btnLn_Click);
             // 
             // button12
             // 
@@ -594,9 +597,9 @@
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
+            this.Controls.Add(this.btnLn);
+            this.Controls.Add(this.btnLg);
+            this.Controls.Add(this.btnLog);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.btnYroot);
             this.Controls.Add(this.btnCbrt);
@@ -666,9 +669,9 @@
         private System.Windows.Forms.Button btnCbrt;
         private System.Windows.Forms.Button btnYroot;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnLog;
+        private System.Windows.Forms.Button btnLg;
+        private System.Windows.Forms.Button btnLn;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
