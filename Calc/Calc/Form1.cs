@@ -24,13 +24,13 @@ namespace Calc
 
             ///TODO:
             ///Memory
-            ///Логарифмы
             ///Тригонометрические функции
             ///Дизайн
             ///config-файл
             ///Запись лога
             /// ^в паралллельном потоке
             ///Новые иконки
+            ///Округление и естественная форма
             
         }
 
@@ -135,7 +135,20 @@ namespace Calc
                         MessageBox.Show("В буфере обмена некорректные данные!", "Ошибка!");
                         return true;
                     }
+                    catch(StackOverflowException)
+                    {
+                        MessageBox.Show("Превышение допустимого размера члена выражения!", "Ошибка!");
+                    }
                     txtBox.Text = Clipboard.GetText();
+                    for (int i = 0; i < txtBox.Text.Length; i++)
+                    {
+                        if((txtBox.Text[0]=='0'&&txtBox.Text[1]=='0')||(txtBox.Text[0]=='-'&&txtBox.Text[1]=='0'&&txtBox.Text[2]=='0'))
+                        {
+                            StringBuilder sb = new StringBuilder(txtBox.Text);
+                            sb.Remove(1, 1);
+                            txtBox.Text = sb.ToString();
+                        }
+                    }
                     return true;
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);    
@@ -145,6 +158,11 @@ namespace Calc
 
         private void numbttn_click_func(char btn_pressed)               // Нажатие цифровых клавиш или точки.
         {
+            if (GlobalVars.action_chosen)
+            {
+                txtBox.Text = "";
+                GlobalVars.action_chosen = false;
+            }
             if(btn_pressed=='.')                                        // Разделитель целой и дробной части. Остатья должен только один.
             {
                 bool dotpres;
@@ -167,23 +185,16 @@ namespace Calc
 
         private void actbttn_click_func(int btn_pressed)                // Выбор операнда.
         {
+            GlobalVars.action_chosen = true;
             resultBox.Text = GlobalAction.glob_numberenter(btn_pressed, txtBox.Text);
-            txtBox.Text = "";
             toolbarAction.Text = statusbar_text.statusbar_action(GlobalVars.glob_action, toolbarAction.Text);
             toolbarDescription.Text = statusbar_text.statusbar_description(GlobalVars.glob_action, toolbarDescription.Text);
         }
 
-        private void enterbttn_click_func()
+        private void enterbttn_click_func()                             // Действие при нажатии кнопки Enter.
         {
-            if (txtBox.Text == "" && !GlobalVars.enter_round)
-                resultBox.Text = GlobalAction.glob_numberenter(-1, "" + GlobalVars.glob_1st);
-            else
-                if (txtBox.Text == "")
-                    resultBox.Text = GlobalAction.glob_numberenter(-1, "" + GlobalVars.glob_2nd);
-                else
-                    resultBox.Text = GlobalAction.glob_numberenter(-1, txtBox.Text);
-            GlobalVars.enter_round = true;
-            txtBox.Text = "";
+            resultBox.Text = GlobalAction.glob_numberenter(-1, txtBox.Text);
+            GlobalVars.action_chosen = true;
         }
 
         private void btn0_Click(object sender, EventArgs e)             // Кнопка 0.
@@ -263,12 +274,15 @@ namespace Calc
 
         private void btnClrFld_Click(object sender, EventArgs e)        // Очистить поле введённого числа.
         {
-            txtBox.Text = "";
+            txtBox.Text = "0";
+            GlobalVars.action_chosen = true;
         }
 
         private void btnClrRslt_Click(object sender, EventArgs e)       // Очистить поле результата.
         {
-            resultBox.Text = "";
+            resultBox.Text = "0";
+            txtBox.Text = "0";
+            GlobalVars.action_chosen = true;
             GlobalVars.glob_1st = 0;
             GlobalVars.glob_action = 0;
             toolbarAction.Text = statusbar_text.statusbar_action(GlobalVars.glob_action, toolbarAction.Text);
@@ -295,7 +309,7 @@ namespace Calc
         private void btnPow2_Click(object sender, EventArgs e)          // Возведение в квадрат.
         {
             GlobalVars.glob_action = 5;
-            if(resultBox.Text=="")
+            if(!GlobalVars.action_chosen)
                 GlobalVars.glob_1st = double.Parse(txtBox.Text);
             txtBox.Text = "2";
             actbttn_click_func(5);
@@ -304,7 +318,7 @@ namespace Calc
         private void btnPow3_Click(object sender, EventArgs e)          // Возведение в куб.
         {
             GlobalVars.glob_action = 5;
-            if (resultBox.Text == "")
+            if (!GlobalVars.action_chosen)
                 GlobalVars.glob_1st = double.Parse(txtBox.Text);
             txtBox.Text = "3";
             actbttn_click_func(5);
@@ -318,7 +332,7 @@ namespace Calc
         private void btnSqrt_Click(object sender, EventArgs e)          // Извлечение квадратного корня.
         {
             GlobalVars.glob_action = 6;
-            if (resultBox.Text == "")
+            if (!GlobalVars.action_chosen)
                 GlobalVars.glob_1st = double.Parse(txtBox.Text);
             txtBox.Text = "2";
             actbttn_click_func(6);
@@ -327,7 +341,7 @@ namespace Calc
         private void btnCbrt_Click(object sender, EventArgs e)          // Извлечение кубического корня.
         {
             GlobalVars.glob_action = 6;
-            if (resultBox.Text == "")
+            if (!GlobalVars.action_chosen)
                 GlobalVars.glob_1st = double.Parse(txtBox.Text);
             txtBox.Text = "3";
             actbttn_click_func(6);
@@ -346,7 +360,7 @@ namespace Calc
         private void btnLg_Click(object sender, EventArgs e)
         {
             GlobalVars.glob_action = 7;
-            if (resultBox.Text == "")
+            if (!GlobalVars.action_chosen)
                 GlobalVars.glob_1st = double.Parse(txtBox.Text);
             txtBox.Text = "10";
             actbttn_click_func(7);
@@ -355,7 +369,7 @@ namespace Calc
         private void btnLn_Click(object sender, EventArgs e)
         {
             GlobalVars.glob_action = 7;
-            if (resultBox.Text == "")
+            if (!GlobalVars.action_chosen)
                 GlobalVars.glob_1st = double.Parse(txtBox.Text);
             txtBox.Text = ""+GlobalVars.glob_exp;
             actbttn_click_func(7);

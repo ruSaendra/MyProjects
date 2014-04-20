@@ -77,7 +77,6 @@ namespace Calc
                             if (local_action != -1)
                             {
                                 GlobalVars.glob_action = local_action;
-                                GlobalVars.enter_round = false;
                             }
                             GlobalAction.glob_action();
                         }
@@ -86,7 +85,7 @@ namespace Calc
                             MessageBox.Show("Error: inappropriate content.");
                         }
                     }
-            return ("" + GlobalVars.glob_1st);
+            return (GlobalVars.glob_1st.ToString(CultureInfo.InvariantCulture));
         }
 
     }

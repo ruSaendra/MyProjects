@@ -557,6 +557,7 @@
             this.txtBox.Name = "txtBox";
             this.txtBox.Size = new System.Drawing.Size(570, 29);
             this.txtBox.TabIndex = 48;
+            this.txtBox.Text = "0";
             this.txtBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // resultBox
@@ -570,6 +571,7 @@
             this.resultBox.Name = "resultBox";
             this.resultBox.Size = new System.Drawing.Size(570, 29);
             this.resultBox.TabIndex = 47;
+            this.resultBox.Text = "0";
             this.resultBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CalcForm
