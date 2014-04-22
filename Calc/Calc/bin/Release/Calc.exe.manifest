@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Calc.exe" size="25088">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Calc.exe" size="30720">
       <assemblyIdentity name="Calc" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eXo7m1SnGXKpcfSi/EchwD89HIQnQOmnRk6TZVwamKo=</dsig:DigestValue>
+        <dsig:DigestValue>/Bw4oy6KAmRW0yTltjuiqZYBVE7P5C1n7woToU4cfBM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

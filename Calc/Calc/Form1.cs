@@ -24,7 +24,6 @@ namespace Calc
 
             ///TODO:
             ///Memory
-            ///Тригонометрические функции
             ///Дизайн
             ///config-файл
             ///Запись лога
@@ -130,24 +129,37 @@ namespace Calc
                     {
                         double.Parse(Clipboard.GetText());
                     }
-                    catch(FormatException)
+                    catch (FormatException)
                     {
                         MessageBox.Show("В буфере обмена некорректные данные!", "Ошибка!");
                         return true;
                     }
-                    catch(StackOverflowException)
+                    catch (StackOverflowException)
                     {
                         MessageBox.Show("Превышение допустимого размера члена выражения!", "Ошибка!");
+                        return true;
+                    }
+                    catch (OverflowException)
+                    {
+                        MessageBox.Show("Превышение допустимого размера члена выражения!", "Ошибка!");
+                        return true;
                     }
                     txtBox.Text = Clipboard.GetText();
-                    for (int i = 0; i < txtBox.Text.Length; i++)
+                    for (int i = 0, j = txtBox.Text.Length; i < j; i++)
                     {
-                        if((txtBox.Text[0]=='0'&&txtBox.Text[1]=='0')||(txtBox.Text[0]=='-'&&txtBox.Text[1]=='0'&&txtBox.Text[2]=='0'))
+                        if (txtBox.Text[0] == '-'&& txtBox.Text[1] == '0' && (txtBox.Text[2] != '.' && txtBox.Text[2] != ','))
                         {
                             StringBuilder sb = new StringBuilder(txtBox.Text);
                             sb.Remove(1, 1);
                             txtBox.Text = sb.ToString();
                         }
+                        else
+                            if (txtBox.Text[0] == '0' && (txtBox.Text[1] != '.' && txtBox.Text[1] != ','))
+                            {
+                                StringBuilder sb = new StringBuilder(txtBox.Text);
+                                sb.Remove(0, 1);
+                                txtBox.Text = sb.ToString();
+                            }
                     }
                     return true;
                 default:
@@ -158,6 +170,8 @@ namespace Calc
 
         private void numbttn_click_func(char btn_pressed)               // Нажатие цифровых клавиш или точки.
         {
+            if (GlobalVars.action_done)
+                clear_fields();
             if (GlobalVars.action_chosen)
             {
                 txtBox.Text = "";
@@ -185,16 +199,30 @@ namespace Calc
 
         private void actbttn_click_func(int btn_pressed)                // Выбор операнда.
         {
-            GlobalVars.action_chosen = true;
             resultBox.Text = GlobalAction.glob_numberenter(btn_pressed, txtBox.Text);
             toolbarAction.Text = statusbar_text.statusbar_action(GlobalVars.glob_action, toolbarAction.Text);
             toolbarDescription.Text = statusbar_text.statusbar_description(GlobalVars.glob_action, toolbarDescription.Text);
+            txtBox.Text = "0";
+            GlobalVars.action_chosen = true;
+            GlobalVars.action_done = false;
         }
 
         private void enterbttn_click_func()                             // Действие при нажатии кнопки Enter.
         {
             resultBox.Text = GlobalAction.glob_numberenter(-1, txtBox.Text);
             GlobalVars.action_chosen = true;
+            GlobalVars.action_done = true;
+        }
+
+        private void clear_fields()
+        {
+            resultBox.Text = "0";
+            txtBox.Text = "0";
+            GlobalVars.action_chosen = true;
+            GlobalVars.glob_1st = 0;
+            GlobalVars.glob_action = 0;
+            toolbarAction.Text = statusbar_text.statusbar_action(GlobalVars.glob_action, toolbarAction.Text);
+            toolbarDescription.Text = statusbar_text.statusbar_description(GlobalVars.glob_action, toolbarDescription.Text);
         }
 
         private void btn0_Click(object sender, EventArgs e)             // Кнопка 0.
@@ -280,13 +308,7 @@ namespace Calc
 
         private void btnClrRslt_Click(object sender, EventArgs e)       // Очистить поле результата.
         {
-            resultBox.Text = "0";
-            txtBox.Text = "0";
-            GlobalVars.action_chosen = true;
-            GlobalVars.glob_1st = 0;
-            GlobalVars.glob_action = 0;
-            toolbarAction.Text = statusbar_text.statusbar_action(GlobalVars.glob_action, toolbarAction.Text);
-            toolbarDescription.Text = statusbar_text.statusbar_description(GlobalVars.glob_action, toolbarDescription.Text);
+            clear_fields();
         }
 
         private void btnEnter_Click(object sender, EventArgs e)         // Выполнить действие или повторить предыдущее.
@@ -308,20 +330,24 @@ namespace Calc
 
         private void btnPow2_Click(object sender, EventArgs e)          // Возведение в квадрат.
         {
+            if(GlobalVars.glob_action!=0)
+                enterbttn_click_func();
             GlobalVars.glob_action = 5;
             if(!GlobalVars.action_chosen)
                 GlobalVars.glob_1st = double.Parse(txtBox.Text);
             txtBox.Text = "2";
-            actbttn_click_func(5);
+            actbttn_click_func(-1);
         }
 
         private void btnPow3_Click(object sender, EventArgs e)          // Возведение в куб.
         {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
             GlobalVars.glob_action = 5;
             if (!GlobalVars.action_chosen)
                 GlobalVars.glob_1st = double.Parse(txtBox.Text);
             txtBox.Text = "3";
-            actbttn_click_func(5);
+            actbttn_click_func(-1);
         }
 
         private void btnPowY_Click(object sender, EventArgs e)          // Возведение в n-ную степень.
@@ -331,20 +357,24 @@ namespace Calc
 
         private void btnSqrt_Click(object sender, EventArgs e)          // Извлечение квадратного корня.
         {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
             GlobalVars.glob_action = 6;
             if (!GlobalVars.action_chosen)
                 GlobalVars.glob_1st = double.Parse(txtBox.Text);
             txtBox.Text = "2";
-            actbttn_click_func(6);
+            actbttn_click_func(-1);
         }
 
         private void btnCbrt_Click(object sender, EventArgs e)          // Извлечение кубического корня.
         {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
             GlobalVars.glob_action = 6;
             if (!GlobalVars.action_chosen)
                 GlobalVars.glob_1st = double.Parse(txtBox.Text);
             txtBox.Text = "3";
-            actbttn_click_func(6);
+            actbttn_click_func(-1);
         }
 
         private void btnYroot_Click(object sender, EventArgs e)         // Извлечение корня n-ной степени.
@@ -352,30 +382,198 @@ namespace Calc
             actbttn_click_func(6);
         }
 
-        private void btnLog_Click(object sender, EventArgs e)
+        private void btnLog_Click(object sender, EventArgs e)           // Вычисление логарифма по основанию n.
         {
             actbttn_click_func(7);
         }
 
-        private void btnLg_Click(object sender, EventArgs e)
+        private void btnLg_Click(object sender, EventArgs e)            // Вычисление десятичного логарифма.
         {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
             GlobalVars.glob_action = 7;
             if (!GlobalVars.action_chosen)
-                GlobalVars.glob_1st = double.Parse(txtBox.Text);
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
             txtBox.Text = "10";
-            actbttn_click_func(7);
+            actbttn_click_func(-1);
         }
 
-        private void btnLn_Click(object sender, EventArgs e)
+        private void btnLn_Click(object sender, EventArgs e)            // Вычисление естественного логарифма.
         {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
             GlobalVars.glob_action = 7;
             if (!GlobalVars.action_chosen)
-                GlobalVars.glob_1st = double.Parse(txtBox.Text);
-            txtBox.Text = ""+GlobalVars.glob_exp;
-            actbttn_click_func(7);
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = Math.E.ToString(CultureInfo.InvariantCulture);
+            actbttn_click_func(-1);
         }
 
+        private void btnSinX_Click(object sender, EventArgs e)          // Синус.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 8;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text,CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
 
+        private void btnCosX_Click(object sender, EventArgs e)          // Косинус.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 9;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
+
+        private void btnTgX_Click(object sender, EventArgs e)           // Тангенс.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 10;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
+
+        private void btnCtgX_Click(object sender, EventArgs e)          // Котангенс.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 11;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
+
+        private void btnSecX_Click(object sender, EventArgs e)          // Секанс.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 12;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
+
+        private void btnCosecX_Click(object sender, EventArgs e)        // Косеканс.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 13;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
+
+        private void btnArcsinX_Click(object sender, EventArgs e)       // Арксинус.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 14;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
+
+        private void btnArccosX_Click(object sender, EventArgs e)       // Арккосинус.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 15;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
+
+        private void btnArctgX_Click(object sender, EventArgs e)        // Арктангенс.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 16;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
+
+        private void btnArcctgX_Click(object sender, EventArgs e)       // Арккотангенс.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 17;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
+
+        private void btnArcsecX_Click(object sender, EventArgs e)       // Арксеканс.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 18;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
+
+        private void btnArccosecX_Click(object sender, EventArgs e)     // Арккосеканс.
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 19;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
+        }
+
+        private void btnFox_Click(object sender, EventArgs e)           // Кнопка Фокса.
+        {
+            DialogResult result = MessageBox.Show("Вы Фокс?", "Кнопка Фокса", MessageBoxButtons.YesNo);
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    for (int i = 0; i < 100; i++)
+                        MessageBox.Show("Уберите Фокса от компьютера!", "Ошибка!");
+                    this.Close();
+                    return;
+                case DialogResult.No:
+                    MessageBox.Show("Эта кнопка не для вас.", "Ошибка!");
+                    return;
+                default:
+                    return;
+            }
+        }
+
+        private void rbtnRad_CheckedChanged(object sender, EventArgs e)
+        {
+            GlobalVars.rad_chosen = true;
+        }
+
+        private void rbtnDeg_CheckedChanged(object sender, EventArgs e)
+        {
+            GlobalVars.rad_chosen = false;
+        }
+
+        private void btnPI_Click(object sender, EventArgs e)
+        {
+            txtBox.Text = Math.Round(Math.PI,15).ToString(CultureInfo.InvariantCulture);
+            GlobalVars.action_chosen = false;
+        }
 
     }
 }

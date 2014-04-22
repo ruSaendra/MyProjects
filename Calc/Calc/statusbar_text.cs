@@ -38,7 +38,7 @@ namespace Calc
                 case 7:
                     if (GlobalVars.glob_2nd == 10)
                         return ("LgX");
-                    if (GlobalVars.glob_2nd == double.Parse(GlobalVars.glob_exp,CultureInfo.InvariantCulture))
+                    if (GlobalVars.glob_2nd == Math.E)
                         return ("LnX");
                     return ("LogX");
                 default:
@@ -75,7 +75,7 @@ namespace Calc
                 case 7:
                     if (GlobalVars.glob_2nd == 10)
                         return ("Вычисление десятичного логарифма Х");
-                    if (GlobalVars.glob_2nd == double.Parse(GlobalVars.glob_exp,CultureInfo.InvariantCulture))
+                    if (GlobalVars.glob_2nd == Math.E)
                         return ("Вычисление натурального логарифма Х");
                     return ("Вычисление логарифма Х по основанию Y");
                 default:

@@ -35,14 +35,50 @@ namespace Calc
                         GlobalVars.glob_1st = GlobalVars.glob_1st / GlobalVars.glob_2nd;
                         break;
                     }
-                case 5:
+                case 5:                                                                     // Возведение в степени.
                     GlobalVars.glob_1st = Math.Pow(GlobalVars.glob_1st, GlobalVars.glob_2nd);
                     break;
-                case 6:
+                case 6:                                                                     // Извлечение корня.
                     GlobalVars.glob_1st = Math.Pow(GlobalVars.glob_1st, 1 / GlobalVars.glob_2nd);
                     break;
-                case 7:
+                case 7:                                                                     // Расчет логарифма.
                     GlobalVars.glob_1st = Math.Log(GlobalVars.glob_1st, GlobalVars.glob_2nd);
+                    break;
+                case 8:                                                                     // Синус.
+                    GlobalVars.glob_1st = Math.Round(Math.Sin(con_DegreeRad()),15);
+                    break;
+                case 9:                                                                     // Косинус.
+                    GlobalVars.glob_1st = Math.Round(Math.Cos(con_DegreeRad()),15);
+                    break;
+                case 10:                                                                    // Тангенс.
+                    GlobalVars.glob_1st = Math.Round(Math.Sin(con_DegreeRad()), 15) / Math.Round(Math.Cos(con_DegreeRad()), 15);
+                    break;
+                case 11:                                                                    // Котангенс.
+                    GlobalVars.glob_1st = Math.Round(Math.Cos(con_DegreeRad()), 15) / Math.Round(Math.Sin(con_DegreeRad()), 15);
+                    break;
+                case 12:                                                                    // Секанс.
+                    GlobalVars.glob_1st = 1 / Math.Round(Math.Cos(con_DegreeRad()), 15);
+                    break;
+                case 13:                                                                    // Косеканс.
+                    GlobalVars.glob_1st = 1 / Math.Round(Math.Sin(con_DegreeRad()), 15);
+                    break;
+                case 14:                                                                    // Арксинус.
+                    GlobalVars.glob_1st = GlobalVars.rad_chosen ? Math.Asin(GlobalVars.glob_1st) : (Math.Asin(GlobalVars.glob_1st) / Math.Round(Math.PI,15) * 180);
+                    break;
+                case 15:                                                                    // Арккосинус.
+                    GlobalVars.glob_1st = GlobalVars.rad_chosen ? Math.Acos(GlobalVars.glob_1st) : (Math.Acos(GlobalVars.glob_1st) / Math.Round(Math.PI, 15) * 180);
+                    break;
+                case 16:                                                                    // Арктангенс.
+                    GlobalVars.glob_1st = GlobalVars.rad_chosen ? Math.Atan(GlobalVars.glob_1st) : (Math.Atan(GlobalVars.glob_1st) / Math.Round(Math.PI, 15) * 180);
+                    break;
+                case 17:                                                                    // Арккотангенс.
+                    GlobalVars.glob_1st = GlobalVars.rad_chosen ? (Math.Atan(-GlobalVars.glob_1st) + Math.Round(Math.PI, 15) / 2) : (Math.Atan(-GlobalVars.glob_1st + Math.Round(Math.PI,15) / 2)/Math.Round(Math.PI,15)*180);
+                    break;
+                case 18:                                                                    // Арксеканс.
+                    GlobalVars.glob_1st = GlobalVars.rad_chosen ? Math.Acos(1 / GlobalVars.glob_1st) : (Math.Acos(1 / (GlobalVars.glob_1st)) / Math.Round(Math.PI,15) * 180);
+                    break;
+                case 19:                                                                    // Арккосеканс.
+                    GlobalVars.glob_1st = GlobalVars.rad_chosen ? Math.Asin(1 / GlobalVars.glob_1st) : (Math.Asin(1 / (GlobalVars.glob_1st)) / Math.Round(Math.PI,15) * 180);
                     break;
                 default:
                     break;
@@ -51,7 +87,7 @@ namespace Calc
 
         public static string glob_numberenter(int local_action, string txtBox)              // Через это делаются действия.
         {
-                if (txtBox == "")                                                           // Повторить предыдущее действие с тем же вторым членом.
+                if (GlobalVars.action_chosen)                                               // Повторить предыдущее действие с тем же вторым членом.
                     if(local_action==-1)
                         GlobalAction.glob_action();
                     else
@@ -74,11 +110,11 @@ namespace Calc
                         try
                         {
                             GlobalVars.glob_2nd = double.Parse(txtBox,CultureInfo.InvariantCulture);
+                            GlobalAction.glob_action();
                             if (local_action != -1)
                             {
                                 GlobalVars.glob_action = local_action;
                             }
-                            GlobalAction.glob_action();
                         }
                         catch (FormatException)
                         {
@@ -86,6 +122,14 @@ namespace Calc
                         }
                     }
             return (GlobalVars.glob_1st.ToString(CultureInfo.InvariantCulture));
+        }
+
+        private static double con_DegreeRad()
+        {
+            if (GlobalVars.rad_chosen)
+                return GlobalVars.glob_1st;
+            else
+                return (Math.PI*GlobalVars.glob_1st / 180);
         }
 
     }
