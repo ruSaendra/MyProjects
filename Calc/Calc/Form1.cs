@@ -23,6 +23,7 @@ namespace Calc
         {
 
             ///TODO:
+            ///Mod, %, e^x
             ///Memory
             ///Дизайн
             ///config-файл
@@ -172,7 +173,7 @@ namespace Calc
         {
             if (GlobalVars.action_done)
                 clear_fields();
-            if (GlobalVars.action_chosen)
+            if (GlobalVars.action_chosen||txtBox.Text=="pi"||txtBox.Text=="e")
             {
                 txtBox.Text = "";
                 GlobalVars.action_chosen = false;
@@ -219,6 +220,7 @@ namespace Calc
             resultBox.Text = "0";
             txtBox.Text = "0";
             GlobalVars.action_chosen = true;
+            GlobalVars.action_done = false;
             GlobalVars.glob_1st = 0;
             GlobalVars.glob_action = 0;
             toolbarAction.Text = statusbar_text.statusbar_action(GlobalVars.glob_action, toolbarAction.Text);
@@ -405,7 +407,7 @@ namespace Calc
             GlobalVars.glob_action = 7;
             if (!GlobalVars.action_chosen)
                 GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
-            txtBox.Text = Math.E.ToString(CultureInfo.InvariantCulture);
+            txtBox.Text = "e";
             actbttn_click_func(-1);
         }
 
@@ -547,7 +549,7 @@ namespace Calc
             switch (result)
             {
                 case DialogResult.Yes:
-                    for (int i = 0; i < 100; i++)
+                    for (int i = 0; i < 57; i++)
                         MessageBox.Show("Уберите Фокса от компьютера!", "Ошибка!");
                     this.Close();
                     return;
@@ -571,8 +573,35 @@ namespace Calc
 
         private void btnPI_Click(object sender, EventArgs e)
         {
-            txtBox.Text = Math.Round(Math.PI,15).ToString(CultureInfo.InvariantCulture);
+            txtBox.Text = "pi";
             GlobalVars.action_chosen = false;
+        }
+
+        private void btnE_Click(object sender, EventArgs e)
+        {
+            txtBox.Text = "e";
+            GlobalVars.action_chosen = false;
+        }
+
+        private void btnMod_Click(object sender, EventArgs e)
+        {
+            actbttn_click_func(20);
+        }
+
+        private void btnPercent_Click(object sender, EventArgs e)
+        {
+            actbttn_click_func(21);
+        }
+
+        private void btnEX_Click(object sender, EventArgs e)
+        {
+            if (GlobalVars.glob_action != 0)
+                enterbttn_click_func();
+            GlobalVars.glob_action = 22;
+            if (!GlobalVars.action_chosen)
+                GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
+            txtBox.Text = "0";
+            actbttn_click_func(-1);
         }
 
     }

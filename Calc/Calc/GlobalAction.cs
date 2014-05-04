@@ -80,6 +80,15 @@ namespace Calc
                 case 19:                                                                    // Арккосеканс.
                     GlobalVars.glob_1st = GlobalVars.rad_chosen ? Math.Asin(1 / GlobalVars.glob_1st) : (Math.Asin(1 / (GlobalVars.glob_1st)) / Math.Round(Math.PI,15) * 180);
                     break;
+                case 20:                                                                    // Деление нацело
+                    GlobalVars.glob_1st = GlobalVars.glob_1st % GlobalVars.glob_2nd;
+                    break;
+                case 21:                                                                    // Вычисление процентного соотношения Х и У.
+                    GlobalVars.glob_1st = GlobalVars.glob_2nd / GlobalVars.glob_1st * 100;
+                    break;
+                case 22:
+                    GlobalVars.glob_1st = Math.Pow(Math.E, GlobalVars.glob_1st);
+                    break;
                 default:
                     break;
             }
@@ -97,7 +106,18 @@ namespace Calc
                     {
                         try
                         {
-                            GlobalVars.glob_1st = double.Parse(txtBox,CultureInfo.InvariantCulture);
+                            switch (txtBox)
+                            {
+                                case "e":
+                                    GlobalVars.glob_1st = Math.Round(Math.E, 15);
+                                    break;
+                                case "pi":
+                                    GlobalVars.glob_1st = Math.Round(Math.PI, 15);
+                                    break;
+                                default:
+                                    GlobalVars.glob_1st = double.Parse(txtBox, CultureInfo.InvariantCulture);
+                                    break;
+                            }
                             GlobalVars.glob_action = local_action;
                         }
                         catch (FormatException)
@@ -109,7 +129,18 @@ namespace Calc
                     {                                                                       // Утверждение второго члена выражения и выбор следующей операции.
                         try
                         {
-                            GlobalVars.glob_2nd = double.Parse(txtBox,CultureInfo.InvariantCulture);
+                            switch (txtBox)
+                            {
+                                case "e":
+                                    GlobalVars.glob_2nd= Math.Round(Math.E, 15);
+                                    break;
+                                case "pi":
+                                    GlobalVars.glob_2nd = Math.Round(Math.PI, 15);
+                                    break;
+                                default:
+                                    GlobalVars.glob_2nd = double.Parse(txtBox, CultureInfo.InvariantCulture);
+                                    break;
+                            }
                             GlobalAction.glob_action();
                             if (local_action != -1)
                             {

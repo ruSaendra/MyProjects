@@ -85,6 +85,10 @@
             this.rbtnDeg = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPI = new System.Windows.Forms.Button();
+            this.btnE = new System.Windows.Forms.Button();
+            this.btnEX = new System.Windows.Forms.Button();
+            this.btnPercent = new System.Windows.Forms.Button();
+            this.btnMod = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.txtresgroup.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -664,7 +668,7 @@
             // 
             // btnPI
             // 
-            this.btnPI.Location = new System.Drawing.Point(214, 186);
+            this.btnPI.Location = new System.Drawing.Point(398, 187);
             this.btnPI.Name = "btnPI";
             this.btnPI.Size = new System.Drawing.Size(40, 29);
             this.btnPI.TabIndex = 22;
@@ -672,12 +676,57 @@
             this.btnPI.UseVisualStyleBackColor = true;
             this.btnPI.Click += new System.EventHandler(this.btnPI_Click);
             // 
+            // btnE
+            // 
+            this.btnE.Location = new System.Drawing.Point(352, 187);
+            this.btnE.Name = "btnE";
+            this.btnE.Size = new System.Drawing.Size(40, 29);
+            this.btnE.TabIndex = 51;
+            this.btnE.Text = "e";
+            this.btnE.UseVisualStyleBackColor = true;
+            this.btnE.Click += new System.EventHandler(this.btnE_Click);
+            // 
+            // btnEX
+            // 
+            this.btnEX.Location = new System.Drawing.Point(306, 187);
+            this.btnEX.Name = "btnEX";
+            this.btnEX.Size = new System.Drawing.Size(40, 29);
+            this.btnEX.TabIndex = 52;
+            this.btnEX.Text = "e^X";
+            this.btnEX.UseVisualStyleBackColor = true;
+            this.btnEX.Click += new System.EventHandler(this.btnEX_Click);
+            // 
+            // btnPercent
+            // 
+            this.btnPercent.Location = new System.Drawing.Point(260, 187);
+            this.btnPercent.Name = "btnPercent";
+            this.btnPercent.Size = new System.Drawing.Size(40, 29);
+            this.btnPercent.TabIndex = 53;
+            this.btnPercent.Text = "%ofX";
+            this.btnPercent.UseVisualStyleBackColor = true;
+            this.btnPercent.Click += new System.EventHandler(this.btnPercent_Click);
+            // 
+            // btnMod
+            // 
+            this.btnMod.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnMod.Location = new System.Drawing.Point(214, 187);
+            this.btnMod.Name = "btnMod";
+            this.btnMod.Size = new System.Drawing.Size(40, 29);
+            this.btnMod.TabIndex = 54;
+            this.btnMod.Text = "mod";
+            this.btnMod.UseVisualStyleBackColor = true;
+            this.btnMod.Click += new System.EventHandler(this.btnMod_Click);
+            // 
             // CalcForm
             // 
             this.AcceptButton = this.btnEnter;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 442);
+            this.ClientSize = new System.Drawing.Size(624, 446);
+            this.Controls.Add(this.btnMod);
+            this.Controls.Add(this.btnPercent);
+            this.Controls.Add(this.btnEX);
+            this.Controls.Add(this.btnE);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtresgroup);
@@ -806,6 +855,10 @@
         private System.Windows.Forms.RadioButton rbtnDeg;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnPI;
+        private System.Windows.Forms.Button btnE;
+        private System.Windows.Forms.Button btnEX;
+        private System.Windows.Forms.Button btnPercent;
+        private System.Windows.Forms.Button btnMod;
     }
 }
 
