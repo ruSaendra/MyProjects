@@ -52,7 +52,7 @@
             this.btnSqrt = new System.Windows.Forms.Button();
             this.btnCbrt = new System.Windows.Forms.Button();
             this.btnYroot = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnMemUse = new System.Windows.Forms.Button();
             this.btnLog = new System.Windows.Forms.Button();
             this.btnLg = new System.Windows.Forms.Button();
             this.btnLn = new System.Windows.Forms.Button();
@@ -65,8 +65,8 @@
             this.btnCtgX = new System.Windows.Forms.Button();
             this.btnCosecX = new System.Windows.Forms.Button();
             this.btnArcsecX = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
+            this.btnMemAdd = new System.Windows.Forms.Button();
+            this.btnMemPaste = new System.Windows.Forms.Button();
             this.btnArccosX = new System.Windows.Forms.Button();
             this.btnArcctgX = new System.Windows.Forms.Button();
             this.btnArccosecX = new System.Windows.Forms.Button();
@@ -80,7 +80,7 @@
             this.txtresgroup = new System.Windows.Forms.GroupBox();
             this.txtBox = new System.Windows.Forms.Label();
             this.resultBox = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMemClear = new System.Windows.Forms.Button();
             this.rbtnRad = new System.Windows.Forms.RadioButton();
             this.rbtnDeg = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -89,9 +89,17 @@
             this.btnEX = new System.Windows.Forms.Button();
             this.btnPercent = new System.Windows.Forms.Button();
             this.btnMod = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.memory5 = new System.Windows.Forms.RadioButton();
+            this.memory4 = new System.Windows.Forms.RadioButton();
+            this.memory3 = new System.Windows.Forms.RadioButton();
+            this.memory2 = new System.Windows.Forms.RadioButton();
+            this.memory1 = new System.Windows.Forms.RadioButton();
+            this.btnMemClearAll = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.txtresgroup.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn9
@@ -330,14 +338,15 @@
             this.btnYroot.UseVisualStyleBackColor = true;
             this.btnYroot.Click += new System.EventHandler(this.btnYroot_Click);
             // 
-            // button8
+            // btnMemUse
             // 
-            this.button8.Location = new System.Drawing.Point(306, 229);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(40, 29);
-            this.button8.TabIndex = 26;
-            this.button8.Text = "+";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnMemUse.Location = new System.Drawing.Point(306, 229);
+            this.btnMemUse.Name = "btnMemUse";
+            this.btnMemUse.Size = new System.Drawing.Size(40, 29);
+            this.btnMemUse.TabIndex = 26;
+            this.btnMemUse.Text = "ME";
+            this.btnMemUse.UseVisualStyleBackColor = true;
+            this.btnMemUse.Click += new System.EventHandler(this.btnMemUse_Click);
             // 
             // btnLog
             // 
@@ -470,23 +479,25 @@
             this.btnArcsecX.UseVisualStyleBackColor = true;
             this.btnArcsecX.Click += new System.EventHandler(this.btnArcsecX_Click);
             // 
-            // button21
+            // btnMemAdd
             // 
-            this.button21.Location = new System.Drawing.Point(214, 229);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(40, 29);
-            this.button21.TabIndex = 22;
-            this.button21.Text = "+";
-            this.button21.UseVisualStyleBackColor = true;
+            this.btnMemAdd.Location = new System.Drawing.Point(214, 229);
+            this.btnMemAdd.Name = "btnMemAdd";
+            this.btnMemAdd.Size = new System.Drawing.Size(40, 29);
+            this.btnMemAdd.TabIndex = 22;
+            this.btnMemAdd.Text = "M";
+            this.btnMemAdd.UseVisualStyleBackColor = true;
+            this.btnMemAdd.Click += new System.EventHandler(this.btnMemAdd_Click);
             // 
-            // button22
+            // btnMemPaste
             // 
-            this.button22.Location = new System.Drawing.Point(260, 229);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(40, 29);
-            this.button22.TabIndex = 27;
-            this.button22.Text = "+";
-            this.button22.UseVisualStyleBackColor = true;
+            this.btnMemPaste.Location = new System.Drawing.Point(260, 229);
+            this.btnMemPaste.Name = "btnMemPaste";
+            this.btnMemPaste.Size = new System.Drawing.Size(40, 29);
+            this.btnMemPaste.TabIndex = 27;
+            this.btnMemPaste.Text = "MP";
+            this.btnMemPaste.UseVisualStyleBackColor = true;
+            this.btnMemPaste.Click += new System.EventHandler(this.btnMemPaste_Click);
             // 
             // btnArccosX
             // 
@@ -617,14 +628,15 @@
             this.resultBox.Text = "0";
             this.resultBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button1
+            // btnMemClear
             // 
-            this.button1.Location = new System.Drawing.Point(352, 229);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 29);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnMemClear.Location = new System.Drawing.Point(352, 229);
+            this.btnMemClear.Name = "btnMemClear";
+            this.btnMemClear.Size = new System.Drawing.Size(40, 29);
+            this.btnMemClear.TabIndex = 47;
+            this.btnMemClear.Text = "MC";
+            this.btnMemClear.UseVisualStyleBackColor = true;
+            this.btnMemClear.Click += new System.EventHandler(this.btnMemClear_Click);
             // 
             // rbtnRad
             // 
@@ -717,18 +729,116 @@
             this.btnMod.UseVisualStyleBackColor = true;
             this.btnMod.Click += new System.EventHandler(this.btnMod_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.memory5);
+            this.groupBox2.Controls.Add(this.memory4);
+            this.groupBox2.Controls.Add(this.memory3);
+            this.groupBox2.Controls.Add(this.memory2);
+            this.groupBox2.Controls.Add(this.memory1);
+            this.groupBox2.Location = new System.Drawing.Point(214, 270);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(224, 115);
+            this.groupBox2.TabIndex = 55;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Ячейки памяти";
+            // 
+            // memory5
+            // 
+            this.memory5.AutoSize = true;
+            this.memory5.Location = new System.Drawing.Point(7, 92);
+            this.memory5.MaximumSize = new System.Drawing.Size(210, 17);
+            this.memory5.MinimumSize = new System.Drawing.Size(210, 17);
+            this.memory5.Name = "memory5";
+            this.memory5.Size = new System.Drawing.Size(210, 17);
+            this.memory5.TabIndex = 57;
+            this.memory5.Text = "Пустая ячейка";
+            this.memory5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.memory5.UseVisualStyleBackColor = true;
+            this.memory5.CheckedChanged += new System.EventHandler(this.memory5_CheckedChanged);
+            // 
+            // memory4
+            // 
+            this.memory4.AutoSize = true;
+            this.memory4.Location = new System.Drawing.Point(7, 74);
+            this.memory4.MaximumSize = new System.Drawing.Size(210, 17);
+            this.memory4.MinimumSize = new System.Drawing.Size(210, 17);
+            this.memory4.Name = "memory4";
+            this.memory4.Size = new System.Drawing.Size(210, 17);
+            this.memory4.TabIndex = 3;
+            this.memory4.Text = "Пустая ячейка";
+            this.memory4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.memory4.UseVisualStyleBackColor = true;
+            this.memory4.CheckedChanged += new System.EventHandler(this.memory4_CheckedChanged);
+            // 
+            // memory3
+            // 
+            this.memory3.AutoSize = true;
+            this.memory3.Location = new System.Drawing.Point(7, 56);
+            this.memory3.MaximumSize = new System.Drawing.Size(210, 17);
+            this.memory3.MinimumSize = new System.Drawing.Size(210, 17);
+            this.memory3.Name = "memory3";
+            this.memory3.Size = new System.Drawing.Size(210, 17);
+            this.memory3.TabIndex = 2;
+            this.memory3.Text = "Пустая ячейка";
+            this.memory3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.memory3.UseVisualStyleBackColor = true;
+            this.memory3.CheckedChanged += new System.EventHandler(this.memory3_CheckedChanged);
+            // 
+            // memory2
+            // 
+            this.memory2.AutoSize = true;
+            this.memory2.Location = new System.Drawing.Point(7, 38);
+            this.memory2.MaximumSize = new System.Drawing.Size(210, 17);
+            this.memory2.MinimumSize = new System.Drawing.Size(210, 17);
+            this.memory2.Name = "memory2";
+            this.memory2.Size = new System.Drawing.Size(210, 17);
+            this.memory2.TabIndex = 1;
+            this.memory2.Text = "Пустая ячейка";
+            this.memory2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.memory2.UseVisualStyleBackColor = true;
+            this.memory2.CheckedChanged += new System.EventHandler(this.memory2_CheckedChanged);
+            // 
+            // memory1
+            // 
+            this.memory1.AutoSize = true;
+            this.memory1.Checked = true;
+            this.memory1.Location = new System.Drawing.Point(7, 20);
+            this.memory1.MaximumSize = new System.Drawing.Size(210, 17);
+            this.memory1.MinimumSize = new System.Drawing.Size(210, 17);
+            this.memory1.Name = "memory1";
+            this.memory1.Size = new System.Drawing.Size(210, 17);
+            this.memory1.TabIndex = 0;
+            this.memory1.TabStop = true;
+            this.memory1.Text = "Пустая ячейка";
+            this.memory1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.memory1.UseVisualStyleBackColor = true;
+            this.memory1.CheckedChanged += new System.EventHandler(this.memory1_CheckedChanged);
+            // 
+            // btnMemClearAll
+            // 
+            this.btnMemClearAll.Location = new System.Drawing.Point(398, 229);
+            this.btnMemClearAll.Name = "btnMemClearAll";
+            this.btnMemClearAll.Size = new System.Drawing.Size(40, 29);
+            this.btnMemClearAll.TabIndex = 56;
+            this.btnMemClearAll.Text = "MCA";
+            this.btnMemClearAll.UseVisualStyleBackColor = true;
+            this.btnMemClearAll.Click += new System.EventHandler(this.btnMemClearAll_Click);
+            // 
             // CalcForm
             // 
             this.AcceptButton = this.btnEnter;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 446);
+            this.ClientSize = new System.Drawing.Size(624, 442);
+            this.Controls.Add(this.btnMemClearAll);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnMod);
             this.Controls.Add(this.btnPercent);
             this.Controls.Add(this.btnEX);
             this.Controls.Add(this.btnE);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnMemClear);
             this.Controls.Add(this.txtresgroup);
             this.Controls.Add(this.btnNegate);
             this.Controls.Add(this.statusStrip1);
@@ -737,9 +847,9 @@
             this.Controls.Add(this.btnArccosecX);
             this.Controls.Add(this.btnArcctgX);
             this.Controls.Add(this.btnArccosX);
-            this.Controls.Add(this.button22);
+            this.Controls.Add(this.btnMemPaste);
             this.Controls.Add(this.btnPI);
-            this.Controls.Add(this.button21);
+            this.Controls.Add(this.btnMemAdd);
             this.Controls.Add(this.btnArcsecX);
             this.Controls.Add(this.btnCosecX);
             this.Controls.Add(this.btnCtgX);
@@ -752,7 +862,7 @@
             this.Controls.Add(this.btnLn);
             this.Controls.Add(this.btnLg);
             this.Controls.Add(this.btnLog);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.btnMemUse);
             this.Controls.Add(this.btnYroot);
             this.Controls.Add(this.btnCbrt);
             this.Controls.Add(this.btnSqrt);
@@ -792,6 +902,8 @@
             this.txtresgroup.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -822,7 +934,7 @@
         private System.Windows.Forms.Button btnSqrt;
         private System.Windows.Forms.Button btnCbrt;
         private System.Windows.Forms.Button btnYroot;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnMemUse;
         private System.Windows.Forms.Button btnLog;
         private System.Windows.Forms.Button btnLg;
         private System.Windows.Forms.Button btnLn;
@@ -835,8 +947,8 @@
         private System.Windows.Forms.Button btnCtgX;
         private System.Windows.Forms.Button btnCosecX;
         private System.Windows.Forms.Button btnArcsecX;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button btnMemAdd;
+        private System.Windows.Forms.Button btnMemPaste;
         private System.Windows.Forms.Button btnArccosX;
         private System.Windows.Forms.Button btnArcctgX;
         private System.Windows.Forms.Button btnArccosecX;
@@ -850,7 +962,7 @@
         private System.Windows.Forms.GroupBox txtresgroup;
         private System.Windows.Forms.Label resultBox;
         private System.Windows.Forms.Label txtBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMemClear;
         private System.Windows.Forms.RadioButton rbtnRad;
         private System.Windows.Forms.RadioButton rbtnDeg;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -859,6 +971,13 @@
         private System.Windows.Forms.Button btnEX;
         private System.Windows.Forms.Button btnPercent;
         private System.Windows.Forms.Button btnMod;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton memory5;
+        private System.Windows.Forms.RadioButton memory4;
+        private System.Windows.Forms.RadioButton memory3;
+        private System.Windows.Forms.RadioButton memory2;
+        private System.Windows.Forms.RadioButton memory1;
+        private System.Windows.Forms.Button btnMemClearAll;
     }
 }
 

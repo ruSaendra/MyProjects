@@ -23,14 +23,12 @@ namespace Calc
         {
 
             ///TODO:
-            ///Mod, %, e^x
-            ///Memory
+            ///Тултипы/индикатор операнда
             ///Дизайн
             ///config-файл
             ///Запись лога
             /// ^в паралллельном потоке
             ///Новые иконки
-            ///Округление и естественная форма
             
         }
 
@@ -128,7 +126,7 @@ namespace Calc
                 case Keys.Shift|Keys.Insert:                            // Вставка из буфера обмена в поле txtbox - олдфажный вариант.
                     try                                                 // Шоб буков не було.
                     {
-                        double.Parse(Clipboard.GetText());
+                        double.Parse(Clipboard.GetText(),CultureInfo.InvariantCulture);
                     }
                     catch (FormatException)
                     {
@@ -145,23 +143,22 @@ namespace Calc
                         MessageBox.Show("Превышение допустимого размера члена выражения!", "Ошибка!");
                         return true;
                     }
-                    txtBox.Text = Clipboard.GetText();
+                    StringBuilder sb = new StringBuilder(Clipboard.GetText());
                     for (int i = 0, j = txtBox.Text.Length; i < j; i++)
                     {
-                        if (txtBox.Text[0] == '-'&& txtBox.Text[1] == '0' && (txtBox.Text[2] != '.' && txtBox.Text[2] != ','))
+                        if (sb[0] == '-'&& sb[1] == '0' && (sb[2] != '.' && sb[2] != ','))
                         {
-                            StringBuilder sb = new StringBuilder(txtBox.Text);
                             sb.Remove(1, 1);
-                            txtBox.Text = sb.ToString();
                         }
                         else
-                            if (txtBox.Text[0] == '0' && (txtBox.Text[1] != '.' && txtBox.Text[1] != ','))
+                            if (sb[0] == '0' && (sb[1] != '.' && sb[1] != ','))
                             {
-                                StringBuilder sb = new StringBuilder(txtBox.Text);
                                 sb.Remove(0, 1);
-                                txtBox.Text = sb.ToString();
                             }
                     }
+                    sb.Replace(',', '.');
+                    txtBox.Text = sb.ToString();
+                    GlobalVars.action_chosen = false;
                     return true;
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);    
@@ -561,39 +558,39 @@ namespace Calc
             }
         }
 
-        private void rbtnRad_CheckedChanged(object sender, EventArgs e)
+        private void rbtnRad_CheckedChanged(object sender, EventArgs e) // Использование радиан в тригонометрических функциях.
         {
             GlobalVars.rad_chosen = true;
         }
 
-        private void rbtnDeg_CheckedChanged(object sender, EventArgs e)
+        private void rbtnDeg_CheckedChanged(object sender, EventArgs e) // Использование градусов в тригонометрических функциях.
         {
             GlobalVars.rad_chosen = false;
         }
 
-        private void btnPI_Click(object sender, EventArgs e)
+        private void btnPI_Click(object sender, EventArgs e)            // Число Пи.
         {
             txtBox.Text = "pi";
             GlobalVars.action_chosen = false;
         }
 
-        private void btnE_Click(object sender, EventArgs e)
+        private void btnE_Click(object sender, EventArgs e)             // Число Е.
         {
             txtBox.Text = "e";
             GlobalVars.action_chosen = false;
         }
 
-        private void btnMod_Click(object sender, EventArgs e)
+        private void btnMod_Click(object sender, EventArgs e)           // Остаток от деления нацело.
         {
             actbttn_click_func(20);
         }
 
-        private void btnPercent_Click(object sender, EventArgs e)
+        private void btnPercent_Click(object sender, EventArgs e)       // Вычисление процентного соотношения Х и У.
         {
             actbttn_click_func(21);
         }
 
-        private void btnEX_Click(object sender, EventArgs e)
+        private void btnEX_Click(object sender, EventArgs e)            // Возведение Е в степень Х.
         {
             if (GlobalVars.glob_action != 0)
                 enterbttn_click_func();
@@ -602,6 +599,184 @@ namespace Calc
                 GlobalVars.glob_1st = double.Parse(txtBox.Text, CultureInfo.InvariantCulture);
             txtBox.Text = "0";
             actbttn_click_func(-1);
+        }
+                                                                        // Выбор активной ячейки памяти.
+        private void memory1_CheckedChanged(object sender, EventArgs e)
+        {
+            GlobalVars.mem_cell_index = 0;
+        }
+
+        private void memory2_CheckedChanged(object sender, EventArgs e)
+        {
+            GlobalVars.mem_cell_index = 1;
+        }
+
+        private void memory3_CheckedChanged(object sender, EventArgs e)
+        {
+            GlobalVars.mem_cell_index = 2;
+        }
+
+        private void memory4_CheckedChanged(object sender, EventArgs e)
+        {
+            GlobalVars.mem_cell_index = 3;
+        }
+
+        private void memory5_CheckedChanged(object sender, EventArgs e)
+        {
+            GlobalVars.mem_cell_index = 4;
+        }
+
+        private void btnMemAdd_Click(object sender, EventArgs e)        // Заполнение ячейки.
+        {
+            try
+            {
+                GlobalVars.mem_cells[GlobalVars.mem_cell_index] = GlobalVars.glob_1st;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                return;
+            }
+            switch (GlobalVars.mem_cell_index)
+            {
+                case 0:
+                    memory1.Text = "" + GlobalVars.mem_cells[GlobalVars.mem_cell_index];
+                    break;
+                case 1:
+                    memory2.Text = "" + GlobalVars.mem_cells[GlobalVars.mem_cell_index];
+                    break;
+                case 2:
+                    memory3.Text = "" + GlobalVars.mem_cells[GlobalVars.mem_cell_index];
+                    break;
+                case 3:
+                    memory4.Text = "" + GlobalVars.mem_cells[GlobalVars.mem_cell_index];
+                    break;
+                case 4:
+                    memory5.Text = "" + GlobalVars.mem_cells[GlobalVars.mem_cell_index];
+                    break;
+                default:
+                    break;
+            }
+            GlobalVars.mem_cells_used[GlobalVars.mem_cell_index] = true;
+        }
+
+        private void btnMemPaste_Click(object sender, EventArgs e)
+        {
+            try                                                 
+            {
+                double.Parse(Clipboard.GetText(),CultureInfo.InvariantCulture);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("В буфере обмена некорректные данные!", "Ошибка!");
+                return;
+            }
+            catch (StackOverflowException)
+            {
+                MessageBox.Show("Превышение допустимого размера члена выражения!", "Ошибка!");
+                return;
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("Превышение допустимого размера члена выражения!", "Ошибка!");
+                return;
+            }
+            StringBuilder sb = new StringBuilder(Clipboard.GetText());
+            for (int i = 0, j = sb.Length; i < j; i++)
+            {
+                if (sb[0] == '-' && sb[1] == '0' && (sb[2] != '.' && sb[2] != ','))
+                {
+                    sb.Remove(1, 1);
+                }
+                else
+                    if (sb[0] == '0' && (sb[1] != '.' && sb[1] != ','))
+                    {
+                        sb.Remove(0, 1);
+                    }
+            }
+            sb.Replace(',', '.');
+            try
+            {
+                GlobalVars.mem_cells[GlobalVars.mem_cell_index] = 0;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                return;
+            }
+            switch (GlobalVars.mem_cell_index)
+            {
+                case 0:
+                    memory1.Text = sb.ToString();
+                    GlobalVars.mem_cells[GlobalVars.mem_cell_index] = double.Parse(memory1.Text, CultureInfo.InvariantCulture);
+                    break;
+                case 1:
+                    memory2.Text = sb.ToString();
+                    GlobalVars.mem_cells[GlobalVars.mem_cell_index] = double.Parse(memory2.Text, CultureInfo.InvariantCulture);
+                    break;
+                case 2:
+                    memory3.Text = sb.ToString();
+                    GlobalVars.mem_cells[GlobalVars.mem_cell_index] = double.Parse(memory3.Text, CultureInfo.InvariantCulture);
+                    break;
+                case 3:
+                    memory4.Text = sb.ToString();
+                    GlobalVars.mem_cells[GlobalVars.mem_cell_index] = double.Parse(memory4.Text, CultureInfo.InvariantCulture);
+                    break;
+                case 4:
+                    memory5.Text = sb.ToString();
+                    GlobalVars.mem_cells[GlobalVars.mem_cell_index] = double.Parse(memory5.Text, CultureInfo.InvariantCulture);
+                    break;
+                default:
+                    break;
+            }
+            GlobalVars.mem_cells_used[GlobalVars.mem_cell_index] = true;
+        }
+
+        private void btnMemUse_Click(object sender, EventArgs e)
+        {
+            if (!GlobalVars.mem_cells_used[GlobalVars.mem_cell_index])
+            {
+                MessageBox.Show("Ячейка пуста!", "Ошибка!");
+                return;
+            }
+            StringBuilder sb = new StringBuilder(GlobalVars.mem_cells[GlobalVars.mem_cell_index].ToString());
+            sb.Replace(',', '.');
+            txtBox.Text = sb.ToString();
+            GlobalVars.action_chosen = false;
+        }
+
+        private void btnMemClear_Click(object sender, EventArgs e)
+        {
+            GlobalVars.mem_cells_used[GlobalVars.mem_cell_index] = false;
+            switch(GlobalVars.mem_cell_index)
+            {
+                case 0:
+                    memory1.Text = "Пустая ячейка";
+                    break;
+                case 1:
+                    memory2.Text = "Пустая ячейка";
+                    break;
+                case 2:
+                    memory3.Text = "Пустая ячейка";
+                    break;
+                case 3:
+                    memory4.Text = "Пустая ячейка";
+                    break;
+                case 4:
+                    memory5.Text = "Пустая ячейка";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void btnMemClearAll_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 5; i++)
+                GlobalVars.mem_cells_used[GlobalVars.mem_cell_index] = false;
+            memory1.Text = "Пустая ячейка";
+            memory2.Text = "Пустая ячейка";
+            memory3.Text = "Пустая ячейка";
+            memory4.Text = "Пустая ячейка";
+            memory5.Text = "Пустая ячейка";
         }
 
     }

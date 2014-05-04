@@ -86,7 +86,7 @@ namespace Calc
                 case 21:                                                                    // Вычисление процентного соотношения Х и У.
                     GlobalVars.glob_1st = GlobalVars.glob_2nd / GlobalVars.glob_1st * 100;
                     break;
-                case 22:
+                case 22:                                                                    // Возведение Е в степень Х.
                     GlobalVars.glob_1st = Math.Pow(Math.E, GlobalVars.glob_1st);
                     break;
                 default:
