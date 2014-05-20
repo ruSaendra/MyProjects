@@ -849,5 +849,41 @@ namespace Calc
             bspcbutton_click_func();
         }
 
+        private void btnLogToggle_Click(object sender, EventArgs e)         // Ручные запуск и остановка записи лога.
+        {
+            if (GlobalVars.log_writing)
+            {
+                DialogResult logToggleDlg = MessageBox.Show("В настоящее время производится запись лога. Вы действительно хотите остановить запись?", "Внимание!", MessageBoxButtons.YesNo);
+                switch (logToggleDlg)
+                {
+                    case DialogResult.Yes:
+                        MessageBox.Show("Запись лога была остановлена вручную. Вы можете запустить её снова в любой момент.", "Внимание!");
+                        Logging.logging(20);
+                        GlobalVars.log_writing = false;
+                        return;
+                    case DialogResult.No:
+                    default:
+                        MessageBox.Show("Запись лога продолжается.", "Внимание!");
+                        return;
+                }
+            }
+            else
+            {
+                DialogResult logToggleDlg = MessageBox.Show("В настоящее время запись лога не производится. Вы действительно хотите запустить запись?", "Внимание!", MessageBoxButtons.YesNo);
+                switch (logToggleDlg)
+                {
+                    case DialogResult.Yes:
+                        GlobalVars.log_writing = true;
+                        MessageBox.Show("Запись лога была запущена вручную. Вы можете остановить её снова в любой момент.", "Внимание!");
+                        Logging.logging(21);
+                        return;
+                    case DialogResult.No:
+                    default:
+                        MessageBox.Show("Запись лога не запущена.", "Внимание!");
+                        return;
+                }
+            }  
+        }
+
     }
 }

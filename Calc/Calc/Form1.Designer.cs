@@ -94,6 +94,8 @@
             this.btnBspc = new System.Windows.Forms.Button();
             this.actnLabel = new System.Windows.Forms.Label();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnLogToggle = new System.Windows.Forms.Button();
+            this.btnAppConf = new System.Windows.Forms.Button();
             this.txtresgroup.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -847,12 +849,37 @@
             this.actnLabel.Text = "N/A";
             this.actnLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnLogToggle
+            // 
+            this.btnLogToggle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnLogToggle.Location = new System.Drawing.Point(450, 356);
+            this.btnLogToggle.Name = "btnLogToggle";
+            this.btnLogToggle.Size = new System.Drawing.Size(40, 29);
+            this.btnLogToggle.TabIndex = 59;
+            this.btnLogToggle.Text = "LOG";
+            this.tooltip.SetToolTip(this.btnLogToggle, "Запуск или остановка записи лога.");
+            this.btnLogToggle.UseVisualStyleBackColor = true;
+            this.btnLogToggle.Click += new System.EventHandler(this.btnLogToggle_Click);
+            // 
+            // btnAppConf
+            // 
+            this.btnAppConf.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAppConf.Location = new System.Drawing.Point(489, 356);
+            this.btnAppConf.Name = "btnAppConf";
+            this.btnAppConf.Size = new System.Drawing.Size(40, 29);
+            this.btnAppConf.TabIndex = 60;
+            this.btnAppConf.Text = "CONF";
+            this.tooltip.SetToolTip(this.btnAppConf, "Конфигурация приложения (W.I.P.)");
+            this.btnAppConf.UseVisualStyleBackColor = true;
+            // 
             // CalcForm
             // 
             this.AcceptButton = this.btnEnter;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 402);
+            this.Controls.Add(this.btnAppConf);
+            this.Controls.Add(this.btnLogToggle);
             this.Controls.Add(this.actnLabel);
             this.Controls.Add(this.btnBspc);
             this.Controls.Add(this.btnMemClearAll);
@@ -996,6 +1023,8 @@
         private System.Windows.Forms.Button btnBspc;
         private System.Windows.Forms.Label actnLabel;
         private System.Windows.Forms.ToolTip tooltip;
+        private System.Windows.Forms.Button btnLogToggle;
+        private System.Windows.Forms.Button btnAppConf;
     }
 }
 

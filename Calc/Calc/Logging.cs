@@ -13,9 +13,12 @@ namespace Calc
     {
         public static void logging(int logActIndex)
         {
+            if (!GlobalVars.log_writing)
+                return;
             switch (logActIndex)
             {
                 case 0:
+                    GlobalVars.logFilePath = "Calculator Log\\log_"+DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")+".txt";
                     GlobalVars.logString = "Приложение было открыто.";
                     break;
                 case 1:
@@ -76,7 +79,7 @@ namespace Calc
                     sb.Replace(',', '.');
                     GlobalVars.logString = "Из буфера обмена вставлено число " + sb.ToString() + ".";
                     break;
-                case 15:
+                case 15:                                                                            // Ошибки. Говорит само за себя.
                     GlobalVars.logString = "Ошибка: попытка деления на ноль!";
                     break;
                 case 16:
@@ -91,6 +94,18 @@ namespace Calc
                 case 19:
                     GlobalVars.logString = "Ошибка: попытка извлечь значение из пустой ячейки памяти!";
                     break;
+                case 20:
+                    GlobalVars.logString = "Запись лога остановлена вручную.";
+                    break;
+                case 21:
+                    GlobalVars.logFilePath = "Calculator Log\\log_" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".txt";
+                    GlobalVars.logString = "Запись лога была запущена вручную.";
+                    if (GlobalVars.log_stop_error)
+                    {
+                        GlobalVars.logString = GlobalVars.logString + Environment.NewLine + "Ранее во время текущей сессии запись лога была остановлена аварийно из-за ошибки: " + GlobalVars.logError;
+                        GlobalVars.log_stop_error = false;
+                    }
+                    break;
                 default:
                     return;
             }
@@ -99,14 +114,24 @@ namespace Calc
 
         private static void writeLog()                                                      // Запись лога в файл.
         {
-            if(!Directory.Exists(@"Log"))                                                   // Создание директории, если ещё не создана.
+            if (!Directory.Exists(@"Calculator Log"))                                                   // Создание директории, если ещё не создана.
             {
-                Directory.CreateDirectory(@"Log");
+                Directory.CreateDirectory(@"Calculator Log");
             }
-            using (StreamWriter logAct = new StreamWriter("Log\\log.txt", true))
+            try
             {
-                logAct.Write("[{0:dd.MM.yyyy HH:mm:ss}] ",DateTime.Now);                    // Таймстамп.
-                logAct.WriteLine(GlobalVars.logString);                                     // Выполненное действие.
+                using (StreamWriter logAct = new StreamWriter(GlobalVars.logFilePath, true))
+                {
+                    logAct.Write("[{0:dd.MM.yyyy HH:mm:ss}] ", DateTime.Now);                    // Таймстамп.
+                    logAct.WriteLine(GlobalVars.logString);                                     // Выполненное действие.
+                }
+            }
+            catch (Exception ex)
+            {
+                GlobalVars.logError = ex.ToString();
+                MessageBox.Show("Запись лога остановлена из-за ошибки: " + GlobalVars.logError + ". Вы можете вручную начать запись лога заново.", "Ошибка!");
+                GlobalVars.log_writing = false;
+                GlobalVars.log_stop_error = true;
             }
             return;
         }
