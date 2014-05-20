@@ -76,6 +76,21 @@ namespace Calc
                     sb.Replace(',', '.');
                     GlobalVars.logString = "Из буфера обмена вставлено число " + sb.ToString() + ".";
                     break;
+                case 15:
+                    GlobalVars.logString = "Ошибка: попытка деления на ноль!";
+                    break;
+                case 16:
+                    GlobalVars.logString = "Ошибка: попытка вставить из буфера обмена некорректные данные!";
+                    break;
+                case 17:
+                    GlobalVars.logString = "Ошибка: попытка вставки слишком большого значения из буфера обмена!";
+                    break;
+                case 18:
+                    GlobalVars.logString = "Ошибка: переполнение стека при вставке значения из буфера обмена!";
+                    break;
+                case 19:
+                    GlobalVars.logString = "Ошибка: попытка извлечь значение из пустой ячейки памяти!";
+                    break;
                 default:
                     return;
             }

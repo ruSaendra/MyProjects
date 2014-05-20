@@ -27,8 +27,6 @@ namespace Calc
             ///Дизайн
             ///config-файл
             ///Запись лога
-            /// таймстамп
-            /// действие
             /// ошибки
             /// ^в паралллельном потоке
             ///Новые иконки
@@ -135,16 +133,19 @@ namespace Calc
                     catch (FormatException)
                     {
                         MessageBox.Show("В буфере обмена некорректные данные!", "Ошибка!");
+                        Logging.logging(16);
                         return true;
                     }
                     catch (StackOverflowException)
                     {
                         MessageBox.Show("Превышение допустимого размера члена выражения!", "Ошибка!");
+                        Logging.logging(18);
                         return true;
                     }
                     catch (OverflowException)
                     {
                         MessageBox.Show("Превышение допустимого размера члена выражения!", "Ошибка!");
+                        Logging.logging(17);
                         return true;
                     }
                     StringBuilder sb = new StringBuilder(Clipboard.GetText());
@@ -167,6 +168,9 @@ namespace Calc
                     return true;
                 case Keys.Back:
                     bspcbutton_click_func();
+                    return true;
+                case Keys.Delete:
+                    clrFieldsbutton_cluck_func();
                     return true;
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);    
@@ -219,7 +223,7 @@ namespace Calc
             GlobalVars.action_done = true;
         }
 
-        private void clear_fields()
+        private void clear_fields()                                     // Очистка всех полей.
         {
             resultBox.Text = "0";
             txtBox.Text = "0";
@@ -232,12 +236,19 @@ namespace Calc
             Logging.logging(8);
         }
 
-        private void bspcbutton_click_func()
+        private void bspcbutton_click_func()                            // Стирание последнего символа.
         {
             if (txtBox.Text.Length == 1 || (txtBox.Text.Length == 2 && txtBox.Text[0] == '-'))
                 txtBox.Text = "0";
             else
                 txtBox.Text = txtBox.Text.Remove(txtBox.Text.Length - 1);
+        }
+
+        private void clrFieldsbutton_cluck_func()                       // Очистка поля ввода данных.
+        {
+            txtBox.Text = "0";
+            GlobalVars.action_chosen = true;
+            Logging.logging(7);
         }
 
         private void btn0_Click(object sender, EventArgs e)             // Кнопка 0.
@@ -321,9 +332,7 @@ namespace Calc
 
         private void btnClrFld_Click(object sender, EventArgs e)        // Очистить поле введённого числа.
         {
-            txtBox.Text = "0";
-            GlobalVars.action_chosen = true;
-            Logging.logging(7);
+            clrFieldsbutton_cluck_func();
         }
 
         private void btnClrRslt_Click(object sender, EventArgs e)       // Очистить поле результата.
@@ -717,16 +726,19 @@ namespace Calc
             catch (FormatException)
             {
                 MessageBox.Show("В буфере обмена некорректные данные!", "Ошибка!");
+                Logging.logging(16);
                 return;
             }
             catch (StackOverflowException)
             {
                 MessageBox.Show("Превышение допустимого размера члена выражения!", "Ошибка!");
+                Logging.logging(18);
                 return;
             }
             catch (OverflowException)
             {
                 MessageBox.Show("Превышение допустимого размера члена выражения!", "Ошибка!");
+                Logging.logging(17);
                 return;
             }
             StringBuilder sb = new StringBuilder(Clipboard.GetText());
@@ -785,6 +797,7 @@ namespace Calc
             if (!GlobalVars.mem_cells_used[GlobalVars.mem_cell_index])
             {
                 MessageBox.Show("Ячейка пуста!", "Ошибка!");
+                Logging.logging(19);
                 return;
             }
             StringBuilder sb = new StringBuilder(GlobalVars.mem_cells[GlobalVars.mem_cell_index].ToString());

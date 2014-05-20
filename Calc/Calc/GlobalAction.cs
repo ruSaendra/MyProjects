@@ -28,6 +28,7 @@ namespace Calc
                     if (GlobalVars.glob_2nd == 0)                                           // Деление.
                     {
                         MessageBox.Show("Деление на ноль недопустимо.","Ошибка");           // Очевидно.
+                        Logging.logging(15);
                         break;
                     }
                     else
