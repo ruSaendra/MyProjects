@@ -37,49 +37,42 @@ namespace Calc
                     return ("YrootX");
                 case 7:
                     if (GlobalVars.glob_2nd == 10)
-                        return ("LgX");
+                        return ("lgX");
                     if (GlobalVars.glob_2nd == Math.Round(Math.E,15))
-                        return ("LnX");
-                    return ("LogX");
+                        return ("lnX");
+                    return ("logX");
+                case 8:
+                    return ("sinX");
+                case 9:
+                    return ("cosX");
+                case 10:
+                    return ("tgX");
+                case 11:
+                    return ("ctgX");
+                case 12:
+                    return ("secX");
+                case 13:
+                    return ("cosecX");
+                case 14:
+                    return ("arcsinX");
+                case 15:
+                    return ("arccosX");
+                case 16:
+                    return ("arctgX");
+                case 17:
+                    return ("arcctgX");
+                case 18:
+                    return ("arcsecX");
+                case 19:
+                    return ("arccosecX");
+                case 20:
+                    return ("XmodY");
+                case 21:
+                    return ("%ofX");
+                case 22:
+                    return ("e^X");
                 default:
                     return (sb_act);
-            }
-        }
-
-        public static string statusbar_description(int act, string sb_dscr)     // Описание операнда.          
-        {
-            switch (act)
-            {
-                case 0:
-                    return ("Выберите действие");
-                case 1:
-                    return ("Сложение: прибавить к значению X значение Y");
-                case 2:
-                    return ("Вычитание: вычесть из значения Х значение Y");
-                case 3:
-                    return ("Умножение: умножить значение Х на значение Y");
-                case 4:
-                    return ("Деление: разделить значение Х на значение Y");
-                case 5:
-                    if (GlobalVars.glob_2nd == 2)
-                        return ("Возведение в квадрат: умножить число Х само на себя");
-                    if (GlobalVars.glob_2nd == 3)
-                        return ("Возведение в куб: умножить число Х само на себя два раза");
-                    return ("Возведение в степень: умножить число Х само на себя Y раз");
-                case 6:
-                    if (GlobalVars.glob_2nd == 2)
-                        return ("Извлечение квадратного корня из Х");
-                    if (GlobalVars.glob_2nd == 3)
-                        return ("Извлечение кубического корня из Х");
-                    return ("Извлечение корня степени Y из Х");
-                case 7:
-                    if (GlobalVars.glob_2nd == 10)
-                        return ("Вычисление десятичного логарифма Х");
-                    if (GlobalVars.glob_2nd == Math.Round(Math.E,15))
-                        return ("Вычисление натурального логарифма Х");
-                    return ("Вычисление логарифма Х по основанию Y");
-                default:
-                    return (sb_dscr);
             }
         }
 

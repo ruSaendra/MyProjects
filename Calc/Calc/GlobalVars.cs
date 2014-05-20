@@ -14,8 +14,11 @@ namespace Calc
         public static int glob_action=0;                    // Переменная для выбора действия.
         public static bool action_chosen = true,            // Выбрано ли текущее действие.
                            action_done = false,             // Выполнено ли последнее действие.
+                           last_act_unar = false,           // Унарность последней операции.
                            rad_chosen = true;               // Расчет тригонометрических функций в радианах (false - градусы).
         public static bool[] mem_cells_used = { false, false, false, false, false };
-        public static int mem_cell_index = 0;
+        public static int mem_cell_index = 0;               // Индекс ячейки для запоминания чисел.
+        public static string logString;                     // Строка для вывода лога.
+        public static string[] logData = new string[3];     // Массив с данными для лога: 0 - первый член выражения, 1 - второй член выражения, 2 - результат.
     }
 }

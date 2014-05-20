@@ -92,15 +92,20 @@ namespace Calc
                 default:
                     break;
             }
+            Logging.logging(6);
+            Logging.logging(2);
         }
 
         public static string glob_numberenter(int local_action, string txtBox)              // Через это делаются действия.
         {
                 if (GlobalVars.action_chosen)                                               // Повторить предыдущее действие с тем же вторым членом.
-                    if(local_action==-1)
+                    if (local_action == -1)
                         GlobalAction.glob_action();
                     else
+                    {
                         GlobalVars.glob_action = local_action;                              // Выбрать другое действие.
+                        Logging.logging(5);
+                    }
                 else
                     if (GlobalVars.glob_action == 0)                                        // Утверждение первого члена выражения и выбор операции.
                     {
@@ -118,7 +123,9 @@ namespace Calc
                                     GlobalVars.glob_1st = double.Parse(txtBox, CultureInfo.InvariantCulture);
                                     break;
                             }
+                            Logging.logging(2);
                             GlobalVars.glob_action = local_action;
+                            Logging.logging(4);
                         }
                         catch (FormatException)
                         {
@@ -141,6 +148,7 @@ namespace Calc
                                     GlobalVars.glob_2nd = double.Parse(txtBox, CultureInfo.InvariantCulture);
                                     break;
                             }
+                            Logging.logging(3);
                             GlobalAction.glob_action();
                             if (local_action != -1)
                             {

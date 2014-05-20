@@ -48,7 +48,6 @@
             this.btnPow2 = new System.Windows.Forms.Button();
             this.btnPow3 = new System.Windows.Forms.Button();
             this.btnPowY = new System.Windows.Forms.Button();
-            this.btnFox = new System.Windows.Forms.Button();
             this.btnSqrt = new System.Windows.Forms.Button();
             this.btnCbrt = new System.Windows.Forms.Button();
             this.btnYroot = new System.Windows.Forms.Button();
@@ -72,10 +71,6 @@
             this.btnArccosecX = new System.Windows.Forms.Button();
             this.btnClrFld = new System.Windows.Forms.Button();
             this.btnClrRslt = new System.Windows.Forms.Button();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolbarAction = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolbarDescription = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnNegate = new System.Windows.Forms.Button();
             this.txtresgroup = new System.Windows.Forms.GroupBox();
             this.txtBox = new System.Windows.Forms.Label();
@@ -96,7 +91,9 @@
             this.memory2 = new System.Windows.Forms.RadioButton();
             this.memory1 = new System.Windows.Forms.RadioButton();
             this.btnMemClearAll = new System.Windows.Forms.Button();
-            this.statusStrip1.SuspendLayout();
+            this.btnBspc = new System.Windows.Forms.Button();
+            this.actnLabel = new System.Windows.Forms.Label();
+            this.tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.txtresgroup.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -218,7 +215,8 @@
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(132, 42);
             this.btnEnter.TabIndex = 1;
-            this.btnEnter.Text = "MAKE SOME MAGIC";
+            this.btnEnter.Text = "ENTER";
+            this.tooltip.SetToolTip(this.btnEnter, "Выполнить действие");
             this.btnEnter.UseVisualStyleBackColor = true;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
@@ -229,6 +227,7 @@
             this.btnDivis.Size = new System.Drawing.Size(40, 29);
             this.btnDivis.TabIndex = 17;
             this.btnDivis.Text = "/";
+            this.tooltip.SetToolTip(this.btnDivis, "Деление");
             this.btnDivis.UseVisualStyleBackColor = true;
             this.btnDivis.Click += new System.EventHandler(this.btnDivis_Click);
             // 
@@ -239,6 +238,7 @@
             this.btnMultipl.Size = new System.Drawing.Size(40, 29);
             this.btnMultipl.TabIndex = 16;
             this.btnMultipl.Text = "*";
+            this.tooltip.SetToolTip(this.btnMultipl, "Умножение");
             this.btnMultipl.UseVisualStyleBackColor = true;
             this.btnMultipl.Click += new System.EventHandler(this.btnMultipl_Click);
             // 
@@ -249,6 +249,7 @@
             this.btnSubstr.Size = new System.Drawing.Size(40, 29);
             this.btnSubstr.TabIndex = 15;
             this.btnSubstr.Text = "-";
+            this.tooltip.SetToolTip(this.btnSubstr, "Вычитание");
             this.btnSubstr.UseVisualStyleBackColor = true;
             this.btnSubstr.Click += new System.EventHandler(this.btnSubstr_Click);
             // 
@@ -259,6 +260,7 @@
             this.btnAddit.Size = new System.Drawing.Size(40, 29);
             this.btnAddit.TabIndex = 14;
             this.btnAddit.Text = "+";
+            this.tooltip.SetToolTip(this.btnAddit, "Сложение");
             this.btnAddit.UseVisualStyleBackColor = true;
             this.btnAddit.Click += new System.EventHandler(this.btnAddit_Click);
             // 
@@ -270,6 +272,7 @@
             this.btnPow2.Size = new System.Drawing.Size(40, 29);
             this.btnPow2.TabIndex = 18;
             this.btnPow2.Text = "X^2";
+            this.tooltip.SetToolTip(this.btnPow2, "Возведение в квадрат");
             this.btnPow2.UseVisualStyleBackColor = true;
             this.btnPow2.Click += new System.EventHandler(this.btnPow2_Click);
             // 
@@ -281,6 +284,7 @@
             this.btnPow3.Size = new System.Drawing.Size(40, 29);
             this.btnPow3.TabIndex = 19;
             this.btnPow3.Text = "X^3";
+            this.tooltip.SetToolTip(this.btnPow3, "Возведение в куб");
             this.btnPow3.UseVisualStyleBackColor = true;
             this.btnPow3.Click += new System.EventHandler(this.btnPow3_Click);
             // 
@@ -292,18 +296,9 @@
             this.btnPowY.Size = new System.Drawing.Size(40, 29);
             this.btnPowY.TabIndex = 20;
             this.btnPowY.Text = "X^Y";
+            this.tooltip.SetToolTip(this.btnPowY, "Возведение в степень Y");
             this.btnPowY.UseVisualStyleBackColor = true;
             this.btnPowY.Click += new System.EventHandler(this.btnPowY_Click);
-            // 
-            // btnFox
-            // 
-            this.btnFox.Location = new System.Drawing.Point(12, 270);
-            this.btnFox.Name = "btnFox";
-            this.btnFox.Size = new System.Drawing.Size(132, 55);
-            this.btnFox.TabIndex = 21;
-            this.btnFox.Text = "СПЕЦИАЛЬНАЯ ЧУДЕСНАЯ КНОПКА ДЛЯ ФОКСА!";
-            this.btnFox.UseVisualStyleBackColor = true;
-            this.btnFox.Click += new System.EventHandler(this.btnFox_Click);
             // 
             // btnSqrt
             // 
@@ -313,6 +308,7 @@
             this.btnSqrt.Size = new System.Drawing.Size(40, 29);
             this.btnSqrt.TabIndex = 23;
             this.btnSqrt.Text = "sqrtX";
+            this.tooltip.SetToolTip(this.btnSqrt, "Квадратный корень");
             this.btnSqrt.UseVisualStyleBackColor = true;
             this.btnSqrt.Click += new System.EventHandler(this.btnSqrt_Click);
             // 
@@ -324,6 +320,7 @@
             this.btnCbrt.Size = new System.Drawing.Size(40, 29);
             this.btnCbrt.TabIndex = 24;
             this.btnCbrt.Text = "cbrtX";
+            this.tooltip.SetToolTip(this.btnCbrt, "Кубический корень");
             this.btnCbrt.UseVisualStyleBackColor = true;
             this.btnCbrt.Click += new System.EventHandler(this.btnCbrt_Click);
             // 
@@ -335,6 +332,7 @@
             this.btnYroot.Size = new System.Drawing.Size(40, 29);
             this.btnYroot.TabIndex = 25;
             this.btnYroot.Text = "YrtX";
+            this.tooltip.SetToolTip(this.btnYroot, "Корень степени Y");
             this.btnYroot.UseVisualStyleBackColor = true;
             this.btnYroot.Click += new System.EventHandler(this.btnYroot_Click);
             // 
@@ -356,6 +354,7 @@
             this.btnLog.Size = new System.Drawing.Size(40, 29);
             this.btnLog.TabIndex = 28;
             this.btnLog.Text = "logX";
+            this.tooltip.SetToolTip(this.btnLog, "Логарифм по основанию Y");
             this.btnLog.UseVisualStyleBackColor = true;
             this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
@@ -367,6 +366,7 @@
             this.btnLg.Size = new System.Drawing.Size(40, 29);
             this.btnLg.TabIndex = 29;
             this.btnLg.Text = "lgX";
+            this.tooltip.SetToolTip(this.btnLg, "Десятичный логарифм");
             this.btnLg.UseVisualStyleBackColor = true;
             this.btnLg.Click += new System.EventHandler(this.btnLg_Click);
             // 
@@ -378,6 +378,7 @@
             this.btnLn.Size = new System.Drawing.Size(40, 29);
             this.btnLn.TabIndex = 30;
             this.btnLn.Text = "lnX";
+            this.tooltip.SetToolTip(this.btnLn, "Естественный логарифм");
             this.btnLn.UseVisualStyleBackColor = true;
             this.btnLn.Click += new System.EventHandler(this.btnLn_Click);
             // 
@@ -389,6 +390,7 @@
             this.btnArcsinX.Size = new System.Drawing.Size(40, 29);
             this.btnArcsinX.TabIndex = 31;
             this.btnArcsinX.Text = "asinX";
+            this.tooltip.SetToolTip(this.btnArcsinX, "Арксинус");
             this.btnArcsinX.UseVisualStyleBackColor = true;
             this.btnArcsinX.Click += new System.EventHandler(this.btnArcsinX_Click);
             // 
@@ -400,6 +402,7 @@
             this.btnSinX.Size = new System.Drawing.Size(40, 29);
             this.btnSinX.TabIndex = 33;
             this.btnSinX.Text = "sinX";
+            this.tooltip.SetToolTip(this.btnSinX, "Синус");
             this.btnSinX.UseVisualStyleBackColor = true;
             this.btnSinX.Click += new System.EventHandler(this.btnSinX_Click);
             // 
@@ -411,6 +414,7 @@
             this.btnTgX.Size = new System.Drawing.Size(40, 29);
             this.btnTgX.TabIndex = 34;
             this.btnTgX.Text = "tgX";
+            this.tooltip.SetToolTip(this.btnTgX, "Тангенс");
             this.btnTgX.UseVisualStyleBackColor = true;
             this.btnTgX.Click += new System.EventHandler(this.btnTgX_Click);
             // 
@@ -421,6 +425,7 @@
             this.btnSecX.Size = new System.Drawing.Size(40, 29);
             this.btnSecX.TabIndex = 35;
             this.btnSecX.Text = "secX";
+            this.tooltip.SetToolTip(this.btnSecX, "Секанс");
             this.btnSecX.UseVisualStyleBackColor = true;
             this.btnSecX.Click += new System.EventHandler(this.btnSecX_Click);
             // 
@@ -432,6 +437,7 @@
             this.btnArctgX.Size = new System.Drawing.Size(40, 29);
             this.btnArctgX.TabIndex = 36;
             this.btnArctgX.Text = "atgX";
+            this.tooltip.SetToolTip(this.btnArctgX, "Арктангенс");
             this.btnArctgX.UseVisualStyleBackColor = true;
             this.btnArctgX.Click += new System.EventHandler(this.btnArctgX_Click);
             // 
@@ -443,6 +449,7 @@
             this.btnCosX.Size = new System.Drawing.Size(40, 29);
             this.btnCosX.TabIndex = 38;
             this.btnCosX.Text = "cosX";
+            this.tooltip.SetToolTip(this.btnCosX, "Косинус");
             this.btnCosX.UseVisualStyleBackColor = true;
             this.btnCosX.Click += new System.EventHandler(this.btnCosX_Click);
             // 
@@ -454,6 +461,7 @@
             this.btnCtgX.Size = new System.Drawing.Size(40, 29);
             this.btnCtgX.TabIndex = 39;
             this.btnCtgX.Text = "ctgX";
+            this.tooltip.SetToolTip(this.btnCtgX, "Котангенс");
             this.btnCtgX.UseVisualStyleBackColor = true;
             this.btnCtgX.Click += new System.EventHandler(this.btnCtgX_Click);
             // 
@@ -465,6 +473,7 @@
             this.btnCosecX.Size = new System.Drawing.Size(40, 29);
             this.btnCosecX.TabIndex = 40;
             this.btnCosecX.Text = "csecX";
+            this.tooltip.SetToolTip(this.btnCosecX, "Косеканс");
             this.btnCosecX.UseVisualStyleBackColor = true;
             this.btnCosecX.Click += new System.EventHandler(this.btnCosecX_Click);
             // 
@@ -476,6 +485,7 @@
             this.btnArcsecX.Size = new System.Drawing.Size(40, 29);
             this.btnArcsecX.TabIndex = 41;
             this.btnArcsecX.Text = "asecX";
+            this.tooltip.SetToolTip(this.btnArcsecX, "Арксеканс");
             this.btnArcsecX.UseVisualStyleBackColor = true;
             this.btnArcsecX.Click += new System.EventHandler(this.btnArcsecX_Click);
             // 
@@ -507,6 +517,7 @@
             this.btnArccosX.Size = new System.Drawing.Size(40, 29);
             this.btnArccosX.TabIndex = 32;
             this.btnArccosX.Text = "acosX";
+            this.tooltip.SetToolTip(this.btnArccosX, "Арккосинус");
             this.btnArccosX.UseVisualStyleBackColor = true;
             this.btnArccosX.Click += new System.EventHandler(this.btnArccosX_Click);
             // 
@@ -518,6 +529,7 @@
             this.btnArcctgX.Size = new System.Drawing.Size(40, 29);
             this.btnArcctgX.TabIndex = 37;
             this.btnArcctgX.Text = "actgX";
+            this.tooltip.SetToolTip(this.btnArcctgX, "Арккотангенс");
             this.btnArcctgX.UseVisualStyleBackColor = true;
             this.btnArcctgX.Click += new System.EventHandler(this.btnArcctgX_Click);
             // 
@@ -529,55 +541,32 @@
             this.btnArccosecX.Size = new System.Drawing.Size(40, 29);
             this.btnArccosecX.TabIndex = 42;
             this.btnArccosecX.Text = "acsX";
+            this.tooltip.SetToolTip(this.btnArccosecX, "Арккосеканс");
             this.btnArccosecX.UseVisualStyleBackColor = true;
             this.btnArccosecX.Click += new System.EventHandler(this.btnArccosecX_Click);
             // 
             // btnClrFld
             // 
-            this.btnClrFld.Location = new System.Drawing.Point(590, 9);
+            this.btnClrFld.Location = new System.Drawing.Point(500, 9);
             this.btnClrFld.Name = "btnClrFld";
             this.btnClrFld.Size = new System.Drawing.Size(29, 29);
             this.btnClrFld.TabIndex = 43;
             this.btnClrFld.Text = "C";
+            this.tooltip.SetToolTip(this.btnClrFld, "Очистить поле  ввода числа");
             this.btnClrFld.UseVisualStyleBackColor = true;
             this.btnClrFld.Click += new System.EventHandler(this.btnClrFld_Click);
             // 
             // btnClrRslt
             // 
             this.btnClrRslt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.btnClrRslt.Location = new System.Drawing.Point(590, 41);
+            this.btnClrRslt.Location = new System.Drawing.Point(470, 40);
             this.btnClrRslt.Name = "btnClrRslt";
-            this.btnClrRslt.Size = new System.Drawing.Size(29, 29);
+            this.btnClrRslt.Size = new System.Drawing.Size(59, 29);
             this.btnClrRslt.TabIndex = 44;
             this.btnClrRslt.Text = "CR";
+            this.tooltip.SetToolTip(this.btnClrRslt, "Очистить все поля и сбросить действие");
             this.btnClrRslt.UseVisualStyleBackColor = true;
             this.btnClrRslt.Click += new System.EventHandler(this.btnClrRslt_Click);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolbarAction,
-            this.toolbarDescription});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 420);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(624, 22);
-            this.statusStrip1.TabIndex = 45;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolbarAction
-            // 
-            this.toolbarAction.AutoSize = false;
-            this.toolbarAction.Name = "toolbarAction";
-            this.toolbarAction.Size = new System.Drawing.Size(50, 17);
-            this.toolbarAction.Text = "N/A";
-            // 
-            // toolbarDescription
-            // 
-            this.toolbarDescription.AutoSize = false;
-            this.toolbarDescription.Name = "toolbarDescription";
-            this.toolbarDescription.Size = new System.Drawing.Size(500, 17);
-            this.toolbarDescription.Text = "Choose an action";
-            this.toolbarDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnNegate
             // 
@@ -586,6 +575,7 @@
             this.btnNegate.Size = new System.Drawing.Size(40, 29);
             this.btnNegate.TabIndex = 13;
             this.btnNegate.Text = "- X";
+            this.tooltip.SetToolTip(this.btnNegate, "Отрицательное число");
             this.btnNegate.UseVisualStyleBackColor = true;
             this.btnNegate.Click += new System.EventHandler(this.btnNegate_Click);
             // 
@@ -596,7 +586,7 @@
             this.txtresgroup.Controls.Add(this.resultBox);
             this.txtresgroup.Location = new System.Drawing.Point(10, 4);
             this.txtresgroup.Name = "txtresgroup";
-            this.txtresgroup.Size = new System.Drawing.Size(574, 67);
+            this.txtresgroup.Size = new System.Drawing.Size(454, 67);
             this.txtresgroup.TabIndex = 46;
             this.txtresgroup.TabStop = false;
             // 
@@ -606,10 +596,10 @@
             this.txtBox.BackColor = System.Drawing.SystemColors.Window;
             this.txtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.txtBox.Location = new System.Drawing.Point(2, 7);
-            this.txtBox.MaximumSize = new System.Drawing.Size(570, 29);
-            this.txtBox.MinimumSize = new System.Drawing.Size(570, 29);
+            this.txtBox.MaximumSize = new System.Drawing.Size(450, 29);
+            this.txtBox.MinimumSize = new System.Drawing.Size(450, 29);
             this.txtBox.Name = "txtBox";
-            this.txtBox.Size = new System.Drawing.Size(570, 29);
+            this.txtBox.Size = new System.Drawing.Size(450, 29);
             this.txtBox.TabIndex = 48;
             this.txtBox.Text = "0";
             this.txtBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -620,10 +610,10 @@
             this.resultBox.BackColor = System.Drawing.SystemColors.Window;
             this.resultBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.resultBox.Location = new System.Drawing.Point(2, 36);
-            this.resultBox.MaximumSize = new System.Drawing.Size(570, 29);
-            this.resultBox.MinimumSize = new System.Drawing.Size(570, 29);
+            this.resultBox.MaximumSize = new System.Drawing.Size(450, 29);
+            this.resultBox.MinimumSize = new System.Drawing.Size(450, 29);
             this.resultBox.Name = "resultBox";
-            this.resultBox.Size = new System.Drawing.Size(570, 29);
+            this.resultBox.Size = new System.Drawing.Size(450, 29);
             this.resultBox.TabIndex = 47;
             this.resultBox.Text = "0";
             this.resultBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -650,6 +640,7 @@
             this.rbtnRad.TabIndex = 48;
             this.rbtnRad.TabStop = true;
             this.rbtnRad.Text = "Радианы";
+            this.tooltip.SetToolTip(this.rbtnRad, "Использовать радианы в тригонометрических функциях");
             this.rbtnRad.UseVisualStyleBackColor = true;
             this.rbtnRad.CheckedChanged += new System.EventHandler(this.rbtnRad_CheckedChanged);
             // 
@@ -663,6 +654,7 @@
             this.rbtnDeg.Size = new System.Drawing.Size(60, 16);
             this.rbtnDeg.TabIndex = 49;
             this.rbtnDeg.Text = "Градусы";
+            this.tooltip.SetToolTip(this.rbtnDeg, "Использовать градусы в тригонометрических функциях");
             this.rbtnDeg.UseVisualStyleBackColor = true;
             this.rbtnDeg.CheckedChanged += new System.EventHandler(this.rbtnDeg_CheckedChanged);
             // 
@@ -685,6 +677,7 @@
             this.btnPI.Size = new System.Drawing.Size(40, 29);
             this.btnPI.TabIndex = 22;
             this.btnPI.Text = "PI";
+            this.tooltip.SetToolTip(this.btnPI, "Пи");
             this.btnPI.UseVisualStyleBackColor = true;
             this.btnPI.Click += new System.EventHandler(this.btnPI_Click);
             // 
@@ -695,6 +688,7 @@
             this.btnE.Size = new System.Drawing.Size(40, 29);
             this.btnE.TabIndex = 51;
             this.btnE.Text = "e";
+            this.tooltip.SetToolTip(this.btnE, "e");
             this.btnE.UseVisualStyleBackColor = true;
             this.btnE.Click += new System.EventHandler(this.btnE_Click);
             // 
@@ -705,6 +699,7 @@
             this.btnEX.Size = new System.Drawing.Size(40, 29);
             this.btnEX.TabIndex = 52;
             this.btnEX.Text = "e^X";
+            this.tooltip.SetToolTip(this.btnEX, "e в степени X");
             this.btnEX.UseVisualStyleBackColor = true;
             this.btnEX.Click += new System.EventHandler(this.btnEX_Click);
             // 
@@ -715,6 +710,7 @@
             this.btnPercent.Size = new System.Drawing.Size(40, 29);
             this.btnPercent.TabIndex = 53;
             this.btnPercent.Text = "%ofX";
+            this.tooltip.SetToolTip(this.btnPercent, "Вычисление процентного соотношения Y и X");
             this.btnPercent.UseVisualStyleBackColor = true;
             this.btnPercent.Click += new System.EventHandler(this.btnPercent_Click);
             // 
@@ -726,6 +722,7 @@
             this.btnMod.Size = new System.Drawing.Size(40, 29);
             this.btnMod.TabIndex = 54;
             this.btnMod.Text = "mod";
+            this.tooltip.SetToolTip(this.btnMod, "Остаток от деления нацело");
             this.btnMod.UseVisualStyleBackColor = true;
             this.btnMod.Click += new System.EventHandler(this.btnMod_Click);
             // 
@@ -825,12 +822,39 @@
             this.btnMemClearAll.UseVisualStyleBackColor = true;
             this.btnMemClearAll.Click += new System.EventHandler(this.btnMemClearAll_Click);
             // 
+            // btnBspc
+            // 
+            this.btnBspc.Location = new System.Drawing.Point(470, 9);
+            this.btnBspc.Name = "btnBspc";
+            this.btnBspc.Size = new System.Drawing.Size(29, 29);
+            this.btnBspc.TabIndex = 57;
+            this.btnBspc.Text = "←";
+            this.tooltip.SetToolTip(this.btnBspc, "Удалить последний символ");
+            this.btnBspc.UseVisualStyleBackColor = true;
+            this.btnBspc.Click += new System.EventHandler(this.btnBspc_Click);
+            // 
+            // actnLabel
+            // 
+            this.actnLabel.AutoSize = true;
+            this.actnLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.actnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.actnLabel.Location = new System.Drawing.Point(18, 290);
+            this.actnLabel.MaximumSize = new System.Drawing.Size(120, 70);
+            this.actnLabel.MinimumSize = new System.Drawing.Size(120, 70);
+            this.actnLabel.Name = "actnLabel";
+            this.actnLabel.Size = new System.Drawing.Size(120, 70);
+            this.actnLabel.TabIndex = 58;
+            this.actnLabel.Text = "N/A";
+            this.actnLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CalcForm
             // 
             this.AcceptButton = this.btnEnter;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 442);
+            this.ClientSize = new System.Drawing.Size(544, 402);
+            this.Controls.Add(this.actnLabel);
+            this.Controls.Add(this.btnBspc);
             this.Controls.Add(this.btnMemClearAll);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnMod);
@@ -841,7 +865,6 @@
             this.Controls.Add(this.btnMemClear);
             this.Controls.Add(this.txtresgroup);
             this.Controls.Add(this.btnNegate);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnClrRslt);
             this.Controls.Add(this.btnClrFld);
             this.Controls.Add(this.btnArccosecX);
@@ -866,7 +889,6 @@
             this.Controls.Add(this.btnYroot);
             this.Controls.Add(this.btnCbrt);
             this.Controls.Add(this.btnSqrt);
-            this.Controls.Add(this.btnFox);
             this.Controls.Add(this.btnPowY);
             this.Controls.Add(this.btnPow3);
             this.Controls.Add(this.btnPow2);
@@ -887,8 +909,8 @@
             this.Controls.Add(this.btn6);
             this.Controls.Add(this.btn9);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(640, 480);
-            this.MinimumSize = new System.Drawing.Size(640, 480);
+            this.MaximumSize = new System.Drawing.Size(560, 440);
+            this.MinimumSize = new System.Drawing.Size(560, 440);
             this.Name = "CalcForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -896,8 +918,6 @@
             this.TransparencyKey = System.Drawing.Color.Brown;
             this.Closing += new System.ComponentModel.CancelEventHandler(this.Form1_Closing);
             this.Load += new System.EventHandler(this.CalcForm_Load);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.txtresgroup.ResumeLayout(false);
             this.txtresgroup.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -930,7 +950,6 @@
         private System.Windows.Forms.Button btnPow2;
         private System.Windows.Forms.Button btnPow3;
         private System.Windows.Forms.Button btnPowY;
-        private System.Windows.Forms.Button btnFox;
         private System.Windows.Forms.Button btnSqrt;
         private System.Windows.Forms.Button btnCbrt;
         private System.Windows.Forms.Button btnYroot;
@@ -954,10 +973,6 @@
         private System.Windows.Forms.Button btnArccosecX;
         private System.Windows.Forms.Button btnClrFld;
         private System.Windows.Forms.Button btnClrRslt;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolbarAction;
-        private System.Windows.Forms.ToolStripStatusLabel toolbarDescription;
-        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnNegate;
         private System.Windows.Forms.GroupBox txtresgroup;
         private System.Windows.Forms.Label resultBox;
@@ -978,6 +993,9 @@
         private System.Windows.Forms.RadioButton memory2;
         private System.Windows.Forms.RadioButton memory1;
         private System.Windows.Forms.Button btnMemClearAll;
+        private System.Windows.Forms.Button btnBspc;
+        private System.Windows.Forms.Label actnLabel;
+        private System.Windows.Forms.ToolTip tooltip;
     }
 }
 
